@@ -1,0 +1,9 @@
+<div class="parent">
+  <span>Parent {{count}}</span>
+  <button (click)="changeData()">Change</button>
+  <input type="text" placeholder="input text" (keyup)="keyup()">
+  {{isRendering()}}
+</div>
+<app-child [data]="data"></app-child>
+
+

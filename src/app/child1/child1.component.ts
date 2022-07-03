@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-child2',
-  templateUrl: './child2.component.html',
-  styleUrls: ['./child2.component.scss'],
+  selector: 'app-child1',
+  templateUrl: './child1.component.html',
+  styleUrls: ['./child1.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class child2Component {
+export class child1Component {
   @Input() data: string = '';
   count = 0;
 
   isRendering() {
     this.count++;
-    console.log('child2 is rendering');
+    console.log('child1 is rendering');
   }
 
   keyup() {}

@@ -1,13 +1,8 @@
-.parent {
+.child {
   display: flex;
   flex-direction: column;
   width: 150px;
-  height: 80px;
+  height: 100px;
   border: 1px solid black;
   margin: 25px;
-}
-
-.childs {
-  display: flex;
-  flex-direction: row;
 }

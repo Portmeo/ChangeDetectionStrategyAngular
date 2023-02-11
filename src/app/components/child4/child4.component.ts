@@ -9,31 +9,15 @@ import { StateService } from 'src/app/service/state.service';
 })
 export class Child4Component {
   count = 0;
-  state = '';
   @Input() data: string = '';
-
-  constructor (
-    private stateService: StateService,
-    private cdRef: ChangeDetectorRef
-  ) {
-    this.listenState();
-  }
 
   isRendering() {
     this.count++;
-    console.log('Child4 is rendering');
+    console.log('Child - 4 is rendering');
   }
 
   changeData() {
-    this.data = 'Child4'
-  }
-
-  listenState () {
-    this.stateService.getState()
-      .subscribe((state: string) => {
-        this.state = state;
-        // this.cdRef.markForCheck();
-      });
+    this.data = 'Child - 4 - ' + this.count;
   }
 
   keyup() {}

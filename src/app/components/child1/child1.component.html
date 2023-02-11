@@ -3,9 +3,9 @@
     <span class="title">child - 1</span>
     <span>Render -> {{count}}</span>
     <span>Data: {{data}}</span>
-    <button (click)="changeData()">Change</button>
+    <span>State: {{state}}</span>
+    <button (click)="changeData()">Change Data</button>
     <input type="text" placeholder="input text" (keyup)="keyup()">
-    {{isRendering()}}
   </div>
   <div class="arrows">
     <i class="gg-arrow-bottom-left"></i>
@@ -16,3 +16,4 @@
     <app-child3 [data]="data"></app-child3>
   </div>
 </div>
+{{isRendering()}}

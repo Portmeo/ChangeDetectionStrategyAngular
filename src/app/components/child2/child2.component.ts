@@ -13,11 +13,11 @@ export class child2Component {
 
   isRendering() {
     this.count++;
-    console.log('child2 is rendering');
+    console.log('child - 2 is rendering');
   }
 
   changeData() {
-    this.data = 'Child2'
+    this.data = 'Child - 2 - ' + this.count;
   }
 
   keyup() {}

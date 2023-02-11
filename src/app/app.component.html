@@ -3,10 +3,10 @@
     <span class="title">Parent</span>
     <span>Render -> {{count}}</span>
     <span>Data: {{data}}</span>
-    <button (click)="changeData()">Change</button>
+    <span>State: {{stateService.getState() | async}}</span>
+    <button (click)="changeData()">Change Data</button>
     <button (click)="click()">Click</button>
-    <input type="text" placeholder="input text" (input)="input($event)">
-    {{isRendering()}}
+    <input type="text" placeholder="Update State" (input)="input($event)">
   </div>
   <div class="arrows">
     <i class="gg-arrow-bottom-left"></i>
@@ -17,3 +17,4 @@
     <app-child2 [data]="data" [state]="stateService.getState() | async"></app-child2>
   </div>
 </div>
+{{isRendering()}}

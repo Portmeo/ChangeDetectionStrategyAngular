@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   changeData() {
-    this.data = 'Parent'
+    this.data = 'Parent - ' + this.count;
   }
 
   click() {}

@@ -11,14 +11,16 @@ export class AppComponent {
   data = 'Data';
   count = 0;
 
-  changeData() {
-    this.data = 'DataChange'
-  }
-
-  keyup() {}
-
   isRendering() {
     this.count++;
     console.log('Parent is rendering');
   }
+
+  changeData() {
+    this.data = 'Parent'
+  }
+
+  click() {}
+
+  keyup() {}
 }

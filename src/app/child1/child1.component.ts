@@ -15,9 +15,12 @@ export class child1Component {
     console.log('child1 is rendering');
   }
 
+  changeData() {
+    this.data = 'Child1'
+  }
+
+  click() {}
+
   keyup() {}
 
-  changeData() {
-    this.data = 'DataChange2'
-  }
 }

@@ -16,8 +16,10 @@ export class ChildComponent {
   }
 
   changeData() {
-    this.data = 'DataChange1'
+    this.data = 'Child'
   }
+
+  click() {}
 
   keyup() {}
 }

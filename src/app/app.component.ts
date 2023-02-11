@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { StateService } from './service/state.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,10 @@ export class AppComponent {
   data = 'Data';
   count = 0;
 
+  constructor (
+    readonly stateService: StateService
+  ) {}
+
   isRendering() {
     this.count++;
     console.log('Parent is rendering');
@@ -22,5 +27,7 @@ export class AppComponent {
 
   click() {}
 
-  keyup() {}
+  input (input: any) {
+    this.stateService.setState(input.target.value);
+  }
 }

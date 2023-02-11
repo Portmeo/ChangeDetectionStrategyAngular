@@ -7,9 +7,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class child3Component {
-  @Input() data: string = '';
   count = 0;
-  backgroundColor = true;
+  @Input() data: string = '';
 
   isRendering() {
     this.count++;
@@ -19,8 +18,6 @@ export class child3Component {
   changeData() {
     this.data = 'Child3'
   }
-
-  click() {}
 
   keyup() {}
 }

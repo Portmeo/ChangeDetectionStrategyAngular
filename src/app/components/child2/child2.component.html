@@ -1,12 +1,16 @@
 <div class="parent">
   <div class="child">
-    <span>child2</span>
+    <span class="title">child - 2</span>
     <span>Render -> {{count}}</span>
     <span>Data: {{data}}</span>
+    <span>State: {{state}}</span>
     <button (click)="changeData()">Change</button>
-    <button (click)="click()">Click</button>
     <input type="text" placeholder="input text" (keyup)="keyup()">
     {{isRendering()}}
+  </div>
+  <div class="arrows">
+    <i class="gg-arrow-bottom-left"></i>
+    <i class="gg-arrow-bottom-right"></i>
   </div>
   <div class="children">
     <app-child4 [data]="data"></app-child4>

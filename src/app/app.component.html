@@ -1,15 +1,15 @@
-<div class="root">
-  <div class="parent">
+<div class="parent">
+  <div class="root">
     <span>Parent</span>
-    <span>Rendering -> {{count}}</span>
+    <span>Render -> {{count}}</span>
     <span>Data: {{data}}</span>
     <button (click)="changeData()">Change</button>
     <button (click)="click()">Click</button>
     <input type="text" placeholder="input text" (keyup)="keyup()">
     {{isRendering()}}
   </div>
-  <div class="childs">
-    <app-child [data]="data"></app-child>
+  <div class="children">
+    <app-child1 [data]="data"></app-child1>
     <app-child2 [data]="data"></app-child2>
   </div>
 </div>

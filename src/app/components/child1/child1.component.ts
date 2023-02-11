@@ -5,7 +5,7 @@ import { StateService } from 'src/app/service/state.service';
   selector: 'app-child1',
   templateUrl: './child1.component.html',
   styleUrls: ['./child1.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class child1Component {
   count = 0;

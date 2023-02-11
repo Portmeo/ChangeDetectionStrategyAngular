@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   selector: 'app-child2',
   templateUrl: './child2.component.html',
   styleUrls: ['./child2.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class child2Component {
   count = 0;
@@ -20,5 +20,7 @@ export class child2Component {
     this.data = 'Child - 2 - ' + this.count;
   }
 
-  keyup() {}
+  click () {}
+
+  keyup () {}
 }

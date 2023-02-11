@@ -5,12 +5,16 @@ import { StateService } from './service/state.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   title = 'change-detection';
   data = 'Data';
   count = 0;
+  user = {
+    name: 'Alex',
+    age: 30
+  };
 
   constructor (
     readonly stateService: StateService
@@ -25,7 +29,9 @@ export class AppComponent {
     this.data = 'Parent - ' + this.count;
   }
 
-  click() {}
+  click() {
+    this.user.age = this.count;
+  }
 
   input (input: any) {
     this.stateService.setState(input.target.value);

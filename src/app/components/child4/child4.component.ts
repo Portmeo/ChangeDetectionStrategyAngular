@@ -5,7 +5,7 @@ import { StateService } from 'src/app/service/state.service';
   selector: 'app-child4',
   templateUrl: './child4.component.html',
   styleUrls: ['./child4.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Child4Component {
   count = 0;

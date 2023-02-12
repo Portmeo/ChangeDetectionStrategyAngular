@@ -10,7 +10,7 @@ import { StateService } from './service/state.service';
 export class AppComponent {
   title = 'change-detection';
   data = 'Data';
-  count = 0;
+  render = 0;
   user = {
     name: 'Alex',
     age: 30
@@ -21,16 +21,17 @@ export class AppComponent {
   ) {}
 
   isRendering() {
-    this.count++;
+    this.render++;
     console.log('Parent is rendering');
   }
 
   changeData() {
-    this.data = 'Parent - ' + this.count;
+    this.data = 'Parent - ' + this.render;
   }
 
   click() {
-    this.user.age = this.count;
+    this.user.age = this.render;
+    // this.user = { ...this.user };
   }
 
   input (input: any) {

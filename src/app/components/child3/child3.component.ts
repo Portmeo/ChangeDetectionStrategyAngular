@@ -7,16 +7,16 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class child3Component {
-  count = 0;
+  render = 0;
   @Input() data: string = '';
 
   isRendering() {
-    this.count++;
+    this.render++;
     console.log('child - 3 is rendering');
   }
 
   changeData() {
-    this.data = 'Child - 3 - ' + this.count;
+    this.data = 'Child - 3 - ' + this.render;
   }
 
   keyup() {}

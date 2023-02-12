@@ -8,7 +8,7 @@ import { StateService } from 'src/app/service/state.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class child1Component {
-  count = 0;
+  render = 0;
   state = '';
 
   @Input() data: string = '';
@@ -22,16 +22,15 @@ export class child1Component {
   }
 
   isRendering() {
-    this.count++;
+    this.render++;
     console.log('child - 1 is rendering');
   }
 
   changeData() {
-    this.data = 'Child - 1 - ' + this.count;
+    this.data = 'Child - 1 - ' + this.render;
   }
 
   keyup() {}
-
 
   click() { }
 
@@ -39,7 +38,7 @@ export class child1Component {
     this.stateService.getState()
       .subscribe((state: string) => {
         this.state = state;
-        this.cdRef.markForCheck();
+        // this.cdRef.markForCheck();
       });
   }
 

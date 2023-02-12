@@ -7,17 +7,17 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class child2Component {
-  count = 0;
+  render = 0;
   @Input() data: string = '';
   @Input() state: string | null = '';
 
   isRendering() {
-    this.count++;
+    this.render++;
     console.log('child - 2 is rendering');
   }
 
   changeData() {
-    this.data = 'Child - 2 - ' + this.count;
+    this.data = 'Child - 2 - ' + this.render;
   }
 
   click () {}

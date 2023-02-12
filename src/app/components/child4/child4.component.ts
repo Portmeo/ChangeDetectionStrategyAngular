@@ -8,16 +8,16 @@ import { StateService } from 'src/app/service/state.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Child4Component {
-  count = 0;
+  render = 0;
   @Input() data: string = '';
 
   isRendering() {
-    this.count++;
+    this.render++;
     console.log('Child - 4 is rendering');
   }
 
   changeData() {
-    this.data = 'Child - 4 - ' + this.count;
+    this.data = 'Child - 4 - ' + this.render;
   }
 
   keyup() {}

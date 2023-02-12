@@ -21,8 +21,8 @@ export class OnpushComponent {
     private cdRef: ChangeDetectorRef
   ) {
     // setInterval(() => {
-    //   this.timer++;
-    //   this.cdRef.markForCheck();
+    //  this.timer++;
+    //  this.cdRef.markForCheck();
     // }, 1000);
     this.listenState();
   }
@@ -50,7 +50,7 @@ export class OnpushComponent {
     this.stateService.getSubscribe()
       .subscribe((state: string) => {
         this.stateSubscribe = state;
-        // this.cdRef.markForCheck();
+        this.cdRef.markForCheck();
       });
   }
 }

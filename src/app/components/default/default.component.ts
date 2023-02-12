@@ -26,11 +26,11 @@ export class DefaultComponent {
 
   isRendering() {
     this.render++;
-    console.log('Default - 2 is rendering');
+    console.log('Default - 1 is rendering');
   }
 
   changeData() {
-    this.data = 'Default - 2 - ' + this.render;
+    this.data = 'Default - 1 - ' + this.render;
   }
 
   click () { }

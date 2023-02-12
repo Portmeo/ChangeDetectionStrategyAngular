@@ -14,11 +14,11 @@ export class OnpushChildComponent {
 
   isRendering() {
     this.render++;
-    console.log(`child - ${this.child} is rendering`);
+    console.log(`Onpush - ${this.child} is rendering`);
   }
 
   changeData() {
-    this.data = `Child - ${this.child} - ${this.render}`;
+    this.data = `Onpush - ${this.child} - ${this.render}`;
   }
 
   click () {

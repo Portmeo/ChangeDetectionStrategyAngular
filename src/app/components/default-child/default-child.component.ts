@@ -13,11 +13,11 @@ export class DefaultChildComponent {
 
   isRendering() {
     this.render++;
-    console.log(`child - ${this.child} is rendering`);
+    console.log(`Default - ${this.child} is rendering`);
   }
 
   changeData() {
-    this.data = `Child - ${this.child} - ${this.render}`;
+    this.data = `Default - ${this.child} - ${this.render}`;
   }
 
   click () {

@@ -1,15 +1,14 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
-import { StateService } from 'src/app/service/state.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-child4',
   templateUrl: './child4.component.html',
-  styleUrls: ['./child4.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./child4.component.scss']
 })
 export class Child4Component {
   render = 0;
   @Input() data: string = '';
+  @Output() output = new EventEmitter();
 
   isRendering() {
     this.render++;
@@ -20,5 +19,9 @@ export class Child4Component {
     this.data = 'Child - 4 - ' + this.render;
   }
 
-  keyup() {}
+  click () {
+    this.output.emit();
+  }
+
+  input (input: any) {}
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { StateService } from './service/state.service';
 
 @Component({
@@ -8,17 +8,23 @@ import { StateService } from './service/state.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  title = 'change-detection';
-  data = 'Data';
   render = 0;
+  timer = 0;
+  data = 'Data';
   user = {
     name: 'Alex',
     age: 30
   };
 
   constructor (
-    readonly stateService: StateService
-  ) {}
+    readonly stateService: StateService,
+    private cdRef: ChangeDetectorRef
+  ) {
+    // setInterval(() => {
+    //   this.timer++;
+    //   // this.cdRef.markForCheck();
+    // }, 1000);
+  }
 
   isRendering() {
     this.render++;
@@ -27,6 +33,7 @@ export class AppComponent {
 
   changeData() {
     this.data = 'Parent - ' + this.render;
+    // this.data = 'Parent';
   }
 
   click() {

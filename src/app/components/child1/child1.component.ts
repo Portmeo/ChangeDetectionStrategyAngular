@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { StateService } from 'src/app/service/state.service';
 
 @Component({
@@ -9,14 +9,14 @@ import { StateService } from 'src/app/service/state.service';
 })
 export class child1Component {
   render = 0;
-  state = '';
-
+  output = 0;
+  stateSubscribe = '';
   @Input() data: string = '';
+  @Input() stateAsyncPipe: string | null = '';
   @Input() user?: any;
 
   constructor (
-    private stateService: StateService,
-    private cdRef: ChangeDetectorRef
+    private stateService: StateService
   ) {
     this.listenState();
   }
@@ -30,16 +30,21 @@ export class child1Component {
     this.data = 'Child - 1 - ' + this.render;
   }
 
-  keyup() {}
+  click() {}
 
-  click() { }
+  input (input: any) {
+    // this.stateService.setState(input.target.value);
+  }
+
+  setOutput () {
+    this.output++;
+  }
 
   listenState () {
     this.stateService.getState()
       .subscribe((state: string) => {
-        this.state = state;
+        this.stateSubscribe = state;
         // this.cdRef.markForCheck();
       });
   }
-
 }

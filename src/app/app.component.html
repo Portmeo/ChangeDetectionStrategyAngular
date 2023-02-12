@@ -1,12 +1,25 @@
 <div class="parent">
   <div class="root">
-    <span class="title">Parent</span>
-    <span>Render -> {{render}}</span>
+    <div class="header">
+      <span class="title">Parent </span>
+      <span>Render: {{render}}</span>
+    </div>
+    <span>Timer: {{timer}}</span>
+    <hr>
     <span>Data: {{data}}</span>
+    <button (click)="changeData()">Change Input Data</button>
+    <hr>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Age</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>{{user.name}}</td><td>{{user.age}}</td></tr>
+      </tbody>
+    </table>
+    <button (click)="click()">Change User Age</button>
+    <hr>
     <span>State: {{stateService.getState() | async}}</span>
-    <span>User -> name: {{user.name}} - age: {{user.age}}</span>
-    <button (click)="changeData()">Change Data</button>
-    <button (click)="click()">Click</button>
     <input type="text" placeholder="Update State" (input)="input($event)">
   </div>
   <div class="arrows">
@@ -14,8 +27,34 @@
     <i class="gg-arrow-bottom-right"></i>
   </div>
   <div class="children">
-    <app-child1 [data]="data" [user]="user"></app-child1>
-    <app-child2 [data]="data" [state]="stateService.getState() | async"></app-child2>
+    <app-child1
+      [data]="data"
+      [stateAsyncPipe]="stateService.getState() | async"
+      [user]="user">
+    </app-child1>
+    <app-child2
+      [data]="data"
+      [stateAsyncPipe]="stateService.getState() | async"
+      [user]="user">
+    </app-child2>
   </div>
 </div>
 {{isRendering()}}
+
+<div class="dispatch-cd">
+  <span class="title">Change Detection</span>
+  <table>
+    <thead>
+      <tr><th>TRIGGERS</th><th>DEFAULT</th><th>ONPUSH</th></tr>
+    </thead>
+    <Tbody>
+      <tr><td>Inputs</td><td><span>&#10003;</span></td><td><span>&#10003; (If the value changes)</span></td></tr>
+      <tr><td>Outputs</td><td><span>&#10003;</span></td><td><span>&#10003;</span></td></tr>
+      <tr><td>Timers</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
+      <tr><td>Mouse Events</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
+      <tr><td>Keyboard Events</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
+      <tr><td>Promises</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
+      <tr><td>Request</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
+    </Tbody>
+  </table>
+</div>

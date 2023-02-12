@@ -1,21 +1,41 @@
 <div class="parent">
   <div class="child">
-    <span class="title">child - 1</span>
-    <span>Render -> {{render}}</span>
-    <span>Data: {{data}}</span>
-    <span>State: {{state}}</span>
-    <span>User -> name: {{user.name}} - age: {{user.age}}</span>
-    <button (click)="changeData()">Change Data</button>
-    <button (click)="click()">Click</button>
-    <input type="text" placeholder="input text" (keyup)="keyup()">
+    <div class="header">
+      <span class="title">child - 1</span>
+      <span>Render: {{render}}</span>
+    </div>
+    <span>Output: {{output}}</span>
+    <hr>
+    <span>Input Data: {{data}}</span>
+    <button (click)="changeData()">Change Input Data</button>
+    <hr>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Age</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>{{user.name}}</td><td>{{user.age}}</td></tr>
+      </tbody>
+    </table>
+    <button (click)="click()">Click Empty</button>
+    <hr>
+    <span>State Async Pipe: {{stateAsyncPipe}}</span>
+    <span>State Subscribe: {{stateSubscribe}}</span>
+    <input type="text" placeholder="Input text" (input)="input($event)">
   </div>
   <div class="arrows">
     <i class="gg-arrow-bottom-left"></i>
     <i class="gg-arrow-bottom-right"></i>
   </div>
   <div class="children">
-    <app-child3 [data]="data"></app-child3>
-    <app-child3 [data]="data"></app-child3>
+    <app-child3
+      [data]="data"
+      (output)="setOutput()">
+    </app-child3>
+    <app-child3
+      [data]="data"
+      (output)="setOutput()">
+    </app-child3>
   </div>
 </div>
 {{isRendering()}}

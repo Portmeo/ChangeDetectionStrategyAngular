@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-child3',
@@ -9,6 +9,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class child3Component {
   render = 0;
   @Input() data: string = '';
+  @Output() output = new EventEmitter();
 
   isRendering() {
     this.render++;
@@ -19,5 +20,9 @@ export class child3Component {
     this.data = 'Child - 3 - ' + this.render;
   }
 
-  keyup() {}
+  click () {
+    this.output.emit();
+  }
+
+  input (input: any) {}
 }

@@ -5,13 +5,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class StateService {
-  private state: BehaviorSubject<string> = new BehaviorSubject('');
+  private stateAsyncPipe: BehaviorSubject<string> = new BehaviorSubject('');
+  private stateSubscribe: BehaviorSubject<string> = new BehaviorSubject('');
 
-  getState (): Observable<string> {
-    return this.state.asObservable();
+  getAsyncPipe (): Observable<string> {
+    return this.stateAsyncPipe.asObservable();
   }
 
-  setState (state: string): void {
-    this.state.next(state);
+  setAsyncPipe (asyncPipe: string): void {
+    this.stateAsyncPipe.next(asyncPipe);
+  }
+
+  getSubscribe (): Observable<string> {
+    return this.stateSubscribe.asObservable();
+  }
+
+  setSubscribe (subscribe: string): void {
+    this.stateSubscribe.next(subscribe);
   }
 }

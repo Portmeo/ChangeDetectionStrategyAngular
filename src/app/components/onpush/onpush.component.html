@@ -1,9 +1,11 @@
 <div class="parent">
   <div class="child">
     <div class="header">
-      <span class="title">child - 1</span>
+      <span class="title">Onpush - 1</span>
       <span>Render: {{render}}</span>
     </div>
+    <span>Timer: {{timer}}</span>
+    <hr>
     <span>Output: {{output}}</span>
     <hr>
     <span>Input Data: {{data}}</span>
@@ -21,21 +23,23 @@
     <hr>
     <span>State Async Pipe: {{stateAsyncPipe}}</span>
     <span>State Subscribe: {{stateSubscribe}}</span>
-    <input type="text" placeholder="Input text" (input)="input($event)">
+    <input type="text" placeholder="Update State Subscribe" (input)="input($event)">
   </div>
   <div class="arrows">
     <i class="gg-arrow-bottom-left"></i>
     <i class="gg-arrow-bottom-right"></i>
   </div>
   <div class="children">
-    <app-child3
+    <app-onpush-child
+      [child]="'2'"
       [data]="data"
       (output)="setOutput()">
-    </app-child3>
-    <app-child3
+    </app-onpush-child>
+    <app-onpush-child
+      [child]="'3'"
       [data]="data"
       (output)="setOutput()">
-    </app-child3>
+    </app-onpush-child>
   </div>
 </div>
 {{isRendering()}}

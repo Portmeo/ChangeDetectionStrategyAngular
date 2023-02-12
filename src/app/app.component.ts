@@ -5,11 +5,10 @@ import { StateService } from './service/state.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   render = 0;
-  timer = 0;
   data = 'Data';
   user = {
     name: 'Alex',
@@ -19,12 +18,7 @@ export class AppComponent {
   constructor (
     readonly stateService: StateService,
     private cdRef: ChangeDetectorRef
-  ) {
-    // setInterval(() => {
-    //   this.timer++;
-    //   // this.cdRef.markForCheck();
-    // }, 1000);
-  }
+  ) {}
 
   isRendering() {
     this.render++;
@@ -42,6 +36,6 @@ export class AppComponent {
   }
 
   input (input: any) {
-    this.stateService.setState(input.target.value);
+    this.stateService.setAsyncPipe(input.target.value);
   }
 }

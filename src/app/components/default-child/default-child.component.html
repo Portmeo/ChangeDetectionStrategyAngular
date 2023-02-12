@@ -1,11 +1,12 @@
 <div class="child">
   <div class="header">
-    <span class="title">child - 4</span>
+    <span class="title">DEFAULT - {{child}}</span>
     <span>Render: {{render}}</span>
   </div>
   <span>Input Data: {{data}}</span>
   <button (click)="changeData()">Change Data</button>
   <button (click)="click()">Output Timer</button>
+  <span class="hover" (mouseenter)="click()">HOVER</span>
   <input type="text" placeholder="input text" (input)="input($event)">
 </div>
 {{isRendering()}}

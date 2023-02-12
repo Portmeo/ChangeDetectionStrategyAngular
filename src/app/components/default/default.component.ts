@@ -2,13 +2,14 @@ import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { StateService } from 'src/app/service/state.service';
 
 @Component({
-  selector: 'app-child2',
-  templateUrl: './child2.component.html',
-  styleUrls: ['./child2.component.scss']
+  selector: 'app-default',
+  templateUrl: './default.component.html',
+  styleUrls: ['./default.component.scss']
 })
-export class child2Component {
+export class DefaultComponent {
   render = 0;
   output = 0;
+  timer = 0;
   stateSubscribe = '';
   @Input() data: string = '';
   @Input() stateAsyncPipe: string | null = '';
@@ -17,22 +18,25 @@ export class child2Component {
   constructor (
     private stateService: StateService,
   ) {
+    // setInterval(() => {
+    //   this.timer++;
+    // }, 1000);
     this.listenState();
   }
 
   isRendering() {
     this.render++;
-    console.log('child - 2 is rendering');
+    console.log('Default - 2 is rendering');
   }
 
   changeData() {
-    this.data = 'Child - 2 - ' + this.render;
+    this.data = 'Default - 2 - ' + this.render;
   }
 
   click () { }
 
   input (input: any) {
-    this.stateService.setState(input.target.value);
+    this.stateService.setSubscribe(input.target.value);
   }
 
   setOutput () {
@@ -40,7 +44,7 @@ export class child2Component {
   }
 
   listenState () {
-    this.stateService.getState()
+    this.stateService.getSubscribe()
       .subscribe((state: string) => {
         this.stateSubscribe = state;
         // this.cdRef.markForCheck();

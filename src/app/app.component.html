@@ -4,7 +4,6 @@
       <span class="title">Parent </span>
       <span>Render: {{render}}</span>
     </div>
-    <span>Timer: {{timer}}</span>
     <hr>
     <span>Data: {{data}}</span>
     <button (click)="changeData()">Change Input Data</button>
@@ -19,24 +18,24 @@
     </table>
     <button (click)="click()">Change User Age</button>
     <hr>
-    <span>State: {{stateService.getState() | async}}</span>
-    <input type="text" placeholder="Update State" (input)="input($event)">
+    <span>State: {{stateService.getAsyncPipe() | async}}</span>
+    <input type="text" placeholder="Update State Async Pipe" (input)="input($event)">
   </div>
   <div class="arrows">
     <i class="gg-arrow-bottom-left"></i>
     <i class="gg-arrow-bottom-right"></i>
   </div>
   <div class="children">
-    <app-child1
+    <app-default
       [data]="data"
-      [stateAsyncPipe]="stateService.getState() | async"
+      [stateAsyncPipe]="stateService.getAsyncPipe() | async"
       [user]="user">
-    </app-child1>
-    <app-child2
+    </app-default>
+    <app-onpush
       [data]="data"
-      [stateAsyncPipe]="stateService.getState() | async"
+      [stateAsyncPipe]="stateService.getAsyncPipe() | async"
       [user]="user">
-    </app-child2>
+    </app-onpush>
   </div>
 </div>
 {{isRendering()}}
@@ -48,13 +47,51 @@
       <tr><th>TRIGGERS</th><th>DEFAULT</th><th>ONPUSH</th></tr>
     </thead>
     <Tbody>
-      <tr><td>Inputs</td><td><span>&#10003;</span></td><td><span>&#10003; (If the value changes)</span></td></tr>
-      <tr><td>Outputs</td><td><span>&#10003;</span></td><td><span>&#10003;</span></td></tr>
-      <tr><td>Timers</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
-      <tr><td>Mouse Events</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
-      <tr><td>Keyboard Events</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
-      <tr><td>Promises</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
-      <tr><td>Request</td><td><span>&#10003;</span></td><td><span>&#x2715;</span></td></tr>
+      <tr>
+        <td>Inputs</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#10003; (If the value changes)</span></td>
+      </tr>
+      <tr>
+        <td>Inputs (Mutability)</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#x2715;</span></td>
+      </tr>
+      <tr>
+        <td>Outputs</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#10003;</span></td>
+      </tr>
+      <tr>
+        <td>Timers</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#x2715;</span></td>
+      </tr>
+      <tr>
+        <td>Mouse Events</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#10003;</span></td>
+      </tr>
+      <tr>
+        <td>Keyboard Events</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#10003;</span></td>
+      </tr>
+      <tr>
+        <td>Promises</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#x2715;</span></td>
+      </tr>
+      <tr>
+        <td>Request</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#x2715;</span></td>
+      </tr>
+      <tr>
+        <td>Subscription</td>
+        <td><span>&#10003;</span></td>
+        <td><span>&#x2715;</span></td>
+      </tr>
     </Tbody>
   </table>
 </div>

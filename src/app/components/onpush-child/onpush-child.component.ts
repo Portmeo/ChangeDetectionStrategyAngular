@@ -1,23 +1,24 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-child3',
-  templateUrl: './child3.component.html',
-  styleUrls: ['./child3.component.scss'],
+  selector: 'app-onpush-child',
+  templateUrl: './onpush-child.component.html',
+  styleUrls: ['./onpush-child.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class child3Component {
+export class OnpushChildComponent {
   render = 0;
+  @Input() child?: string;
   @Input() data: string = '';
   @Output() output = new EventEmitter();
 
   isRendering() {
     this.render++;
-    console.log('child - 3 is rendering');
+    console.log(`child - ${this.child} is rendering`);
   }
 
   changeData() {
-    this.data = 'Child - 3 - ' + this.render;
+    this.data = `Child - ${this.child} - ${this.render}`;
   }
 
   click () {

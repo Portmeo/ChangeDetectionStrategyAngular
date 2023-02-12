@@ -1,22 +1,23 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-child4',
-  templateUrl: './child4.component.html',
-  styleUrls: ['./child4.component.scss']
+  selector: 'app-default-child',
+  templateUrl: './default-child.component.html',
+  styleUrls: ['./default-child.component.scss']
 })
-export class Child4Component {
+export class DefaultChildComponent {
   render = 0;
+  @Input() child?: string;
   @Input() data: string = '';
   @Output() output = new EventEmitter();
 
   isRendering() {
     this.render++;
-    console.log('Child - 4 is rendering');
+    console.log(`child - ${this.child} is rendering`);
   }
 
   changeData() {
-    this.data = 'Child - 4 - ' + this.render;
+    this.data = `Child - ${this.child} - ${this.render}`;
   }
 
   click () {

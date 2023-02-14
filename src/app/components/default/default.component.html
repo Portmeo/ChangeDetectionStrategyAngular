@@ -6,8 +6,8 @@
     </div>
     <div class="actions">
       <span>Timer: {{timer}}</span>
-      <button (click)="initTimer()">start</button>
-      <button (click)="clearTimer()">finish</button>
+      <button (click)="initTimer()">Start</button>
+      <button (click)="clearTimer()">End</button>
     </div>
     <hr>
     <span>Output: {{output}}</span>
@@ -28,8 +28,8 @@
     <span>State Async Pipe: {{stateAsyncPipe}}</span>
     <div class="actions">
       <span>Subscribe: {{stateSubscribe}}</span>
-      <button (click)="initSubscribe()">start</button>
-      <button (click)="unsubscribe()">finish</button>
+      <button (click)="initSubscribe()">Start</button>
+      <button (click)="unsubscribe()">End</button>
     </div>
     <input type="text" placeholder="Input text" (input)="input($event)">
   </div>

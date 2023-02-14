@@ -65,6 +65,7 @@ export class OnpushComponent {
   unsubscribe () {
     if (this.subscription) {
       this.subscription?.unsubscribe();
+      this.subscription = undefined;
     }
   }
 }

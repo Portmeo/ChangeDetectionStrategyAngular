@@ -63,6 +63,7 @@ export class DefaultComponent {
   unsubscribe () {
     if (this.subscription) {
       this.subscription?.unsubscribe();
+      this.subscription = undefined;
     }
   }
 }

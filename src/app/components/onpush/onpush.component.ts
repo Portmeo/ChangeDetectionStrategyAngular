@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
 
 @Component({
@@ -11,7 +12,9 @@ export class OnpushComponent {
   render = 0;
   output = 0;
   timer = 0;
-  stateSubscribe = '';
+  stateSubscribe = 0;
+  private subscription?: Subscription;
+  private interval?: any;
   @Input() data: string = '';
   @Input() stateAsyncPipe: string | null = '';
   @Input() user?: any;
@@ -19,12 +22,17 @@ export class OnpushComponent {
   constructor (
     private stateService: StateService,
     private cdRef: ChangeDetectorRef
-  ) {
-    // setInterval(() => {
-    //  this.timer++;
-    //  this.cdRef.markForCheck();
-    // }, 1000);
-    this.listenState();
+  ) { }
+
+  initTimer () {
+    this.interval = setInterval(() => {
+      this.timer++;
+      // this.cdRef.markForCheck();
+     }, 1000);
+  }
+
+  clearTimer () {
+    clearInterval(this.interval);
   }
 
   isRendering() {
@@ -38,19 +46,25 @@ export class OnpushComponent {
 
   click() {}
 
-  input (input: any) {
-    this.stateService.setSubscribe(input.target.value);
-  }
+  input (input: any) { }
 
   setOutput () {
     this.output++;
   }
 
-  listenState () {
-    this.stateService.getSubscribe()
-      .subscribe((state: string) => {
+  initSubscribe () {
+    if (!this.subscription) {
+      this.subscription = this.stateService.getSubscribe()
+      .subscribe((state: number) => {
         this.stateSubscribe = state;
-        this.cdRef.markForCheck();
+        // this.cdRef.markForCheck();
       });
+    }
+  }
+
+  unsubscribe () {
+    if (this.subscription) {
+      this.subscription?.unsubscribe();
+    }
   }
 }

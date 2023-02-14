@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
 
 @Component({
@@ -10,18 +11,26 @@ export class DefaultComponent {
   render = 0;
   output = 0;
   timer = 0;
-  stateSubscribe = '';
+  stateSubscribe = 0;
+  private subscription?: Subscription;
+  private interval?: any;
   @Input() data: string = '';
   @Input() stateAsyncPipe: string | null = '';
   @Input() user?: any;
 
   constructor (
     private stateService: StateService,
-  ) {
-    // setInterval(() => {
-    //   this.timer++;
-    // }, 1000);
-    this.listenState();
+    private cdRef: ChangeDetectorRef
+  ) { }
+
+  initTimer () {
+    this.interval = setInterval(() => {
+      this.timer++;
+     }, 1000);
+  }
+
+  clearTimer () {
+    clearInterval(this.interval);
   }
 
   isRendering() {
@@ -35,19 +44,25 @@ export class DefaultComponent {
 
   click () { }
 
-  input (input: any) {
-    this.stateService.setSubscribe(input.target.value);
-  }
+  input (input: any) { }
 
   setOutput () {
     this.output++;
   }
 
-  listenState () {
-    this.stateService.getSubscribe()
-      .subscribe((state: string) => {
+  initSubscribe () {
+    if (!this.subscription) {
+      this.subscription = this.stateService.getSubscribe()
+      .subscribe((state: number) => {
         this.stateSubscribe = state;
         // this.cdRef.markForCheck();
       });
+    }
+  }
+
+  unsubscribe () {
+    if (this.subscription) {
+      this.subscription?.unsubscribe();
+    }
   }
 }

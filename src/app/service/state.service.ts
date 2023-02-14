@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { interval } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StateService {
   private stateAsyncPipe: BehaviorSubject<string> = new BehaviorSubject('');
-  private stateSubscribe: BehaviorSubject<string> = new BehaviorSubject('');
+  private stateSubscribe = interval(1000);
 
   getAsyncPipe (): Observable<string> {
     return this.stateAsyncPipe.asObservable();
@@ -16,11 +17,7 @@ export class StateService {
     this.stateAsyncPipe.next(asyncPipe);
   }
 
-  getSubscribe (): Observable<string> {
-    return this.stateSubscribe.asObservable();
-  }
-
-  setSubscribe (subscribe: string): void {
-    this.stateSubscribe.next(subscribe);
+  getSubscribe (): Observable<number> {
+    return this.stateSubscribe;
   }
 }

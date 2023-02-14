@@ -4,7 +4,7 @@
   border: 1px solid black;
   margin: 15px;
   padding: 10px;
-  gap: 5px;
+  gap: 3px;
 }
 
 .parent {
@@ -20,7 +20,7 @@
   border: 1px solid black;
   margin: 15px;
   padding: 10px;
-  gap: 5px;
+  gap: 3px;
 }
 
 .children {
@@ -128,4 +128,14 @@ hr {
 
 .hover {
   text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+  button {
+    padding: 5px;
+  }
 }

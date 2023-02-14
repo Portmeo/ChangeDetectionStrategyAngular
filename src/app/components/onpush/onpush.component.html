@@ -4,7 +4,11 @@
       <span class="title">Onpush - 1</span>
       <span>Render: {{render}}</span>
     </div>
-    <span>Timer: {{timer}}</span>
+    <div class="actions">
+      <span>Timer: {{timer}}</span>
+      <button (click)="initTimer()">start</button>
+      <button (click)="clearTimer()">finish</button>
+    </div>
     <hr>
     <span>Output: {{output}}</span>
     <hr>
@@ -22,8 +26,12 @@
     <button (click)="click()">Click Empty</button>
     <hr>
     <span>State Async Pipe: {{stateAsyncPipe}}</span>
-    <span>State Subscribe: {{stateSubscribe}}</span>
-    <input type="text" placeholder="Update State Subscribe" (input)="input($event)">
+    <div class="actions">
+      <span>Subscribe: {{stateSubscribe}}</span>
+      <button (click)="initSubscribe()">start</button>
+      <button (click)="unsubscribe()">finish</button>
+    </div>
+    <input type="text" placeholder="Input text" (input)="input($event)">
   </div>
   <div class="arrows">
     <i class="gg-arrow-bottom-left"></i>

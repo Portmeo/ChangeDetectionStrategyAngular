@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
-import { Subscription, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input } from '@angular/core';
+import { delay, lastValueFrom, of, Subscription } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
 
 @Component({
@@ -20,8 +21,23 @@ export class DefaultComponent {
 
   constructor (
     private stateService: StateService,
-    private cdRef: ChangeDetectorRef
+    private http: HttpClient
   ) { }
+
+  promises () {
+    lastValueFrom(of('Promise Default').pipe(delay(2000))).then(console.log);
+    // const promise = new Promise((resolve, reject) => {
+    //   resolve('Promise Default');
+    // });
+
+    // promise.then(console.log)
+  }
+
+
+  request () {
+    this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
+      .subscribe(console.log);
+  }
 
   initTimer () {
     this.interval = setInterval(() => {
@@ -42,7 +58,7 @@ export class DefaultComponent {
     this.data = 'Default - 1 - ' + this.render;
   }
 
-  click () { }
+  click () {}
 
   input (input: any) { }
 
@@ -55,7 +71,6 @@ export class DefaultComponent {
       this.subscription = this.stateService.getSubscribe()
       .subscribe((state: number) => {
         this.stateSubscription = state;
-        // this.cdRef.markForCheck();
       });
     }
   }

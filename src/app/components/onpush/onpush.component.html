@@ -23,9 +23,14 @@
         <tr><td>{{user.name}}</td><td>{{user.age}}</td></tr>
       </tbody>
     </table>
-    <button (click)="click()">Click Empty</button>
+    <hr>
+    <div class="actions">
+      <button (click)="promises()">Promises</button>
+      <button (click)="request()">Request</button>
+    </div>
     <hr>
     <span>State Async Pipe: {{stateAsyncPipe}}</span>
+    <hr>
     <div class="actions">
       <span>Subscription: {{stateSubscription}}</span>
       <button (click)="initSubscription()">Start</button>

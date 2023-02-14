@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { delay, lastValueFrom, of, Subscription } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
 
 @Component({
@@ -21,8 +22,25 @@ export class OnpushComponent {
 
   constructor (
     private stateService: StateService,
-    private cdRef: ChangeDetectorRef
-  ) { }
+    private cdRef: ChangeDetectorRef,
+    private http: HttpClient
+  ) {
+
+  }
+
+  promises () {
+    lastValueFrom(of('Promise OnPush').pipe(delay(2000))).then(console.log);
+    // const promise = new Promise((resolve, reject) => {
+    //   resolve('Promise OnPush');
+    // });
+
+    // promise.then(console.log)
+  }
+
+  request () {
+    this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
+      .subscribe(console.log);
+  }
 
   initTimer () {
     this.interval = setInterval(() => {

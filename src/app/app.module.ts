@@ -9,6 +9,7 @@ import { DefaultComponent } from './components/default/default.component';
 import { OnpushChildComponent } from './components/onpush-child/onpush-child.component';
 import { DefaultChildComponent } from './components/default-child/default-child.component';
 import { StateService } from './service/state.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { StateService } from './service/state.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [StateService],
   bootstrap: [AppComponent]

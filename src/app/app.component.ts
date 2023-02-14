@@ -21,8 +21,8 @@ export class AppComponent {
   ) {}
 
   isRendering() {
-    this.render++;
     console.log('Parent is rendering');
+    this.render++;
   }
 
   changeData() {

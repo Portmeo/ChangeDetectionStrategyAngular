@@ -12,7 +12,7 @@ export class OnpushComponent {
   render = 0;
   output = 0;
   timer = 0;
-  stateSubscribe = 0;
+  stateSubscription = 0;
   private subscription?: Subscription;
   private interval?: any;
   @Input() data: string = '';
@@ -52,19 +52,19 @@ export class OnpushComponent {
     this.output++;
   }
 
-  initSubscribe () {
+  initSubscription () {
     if (!this.subscription) {
       this.subscription = this.stateService.getSubscribe()
       .subscribe((state: number) => {
-        this.stateSubscribe = state;
+        this.stateSubscription = state;
         // this.cdRef.markForCheck();
       });
     }
   }
 
-  unsubscribe () {
+  stopSubscription () {
     if (this.subscription) {
-      this.subscription?.unsubscribe();
+      this.subscription.unsubscribe();
       this.subscription = undefined;
     }
   }

@@ -7,7 +7,7 @@ import { interval } from 'rxjs';
 })
 export class StateService {
   private stateAsyncPipe: BehaviorSubject<string> = new BehaviorSubject('');
-  private stateSubscribe = interval(1000);
+  private stateSubscription = interval(1000);
 
   getAsyncPipe (): Observable<string> {
     return this.stateAsyncPipe.asObservable();
@@ -18,6 +18,6 @@ export class StateService {
   }
 
   getSubscribe (): Observable<number> {
-    return this.stateSubscribe;
+    return this.stateSubscription;
   }
 }

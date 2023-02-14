@@ -27,9 +27,9 @@
     <hr>
     <span>State Async Pipe: {{stateAsyncPipe}}</span>
     <div class="actions">
-      <span>Subscribe: {{stateSubscribe}}</span>
-      <button (click)="initSubscribe()">Start</button>
-      <button (click)="unsubscribe()">End</button>
+      <span>Subscription: {{stateSubscription}}</span>
+      <button (click)="initSubscription()">Start</button>
+      <button (click)="stopSubscription()">End</button>
     </div>
     <input type="text" placeholder="Input text" (input)="input($event)">
   </div>

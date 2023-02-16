@@ -40,13 +40,16 @@ export class DefaultComponent {
   }
 
   initTimer () {
-    this.interval = setInterval(() => {
-      this.timer++;
-     }, 1000);
+    if (!this.interval) {
+      this.interval = setInterval(() => {
+        this.timer++;
+      }, 1000);
+    }
   }
 
   clearTimer () {
     clearInterval(this.interval);
+    this.interval = null;
   }
 
   isRendering() {

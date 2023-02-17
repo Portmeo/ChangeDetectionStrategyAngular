@@ -6,23 +6,23 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./default-child.component.scss']
 })
 export class DefaultChildComponent {
-  render = 0;
+  public render = 0;
   @Input() child?: string;
-  @Input() data: string = '';
+  @Input() data?: string;
   @Output() output = new EventEmitter();
 
-  isRendering() {
+  isRendering (): void {
     this.render++;
     console.log(`Default - ${this.child} is rendering`);
   }
 
-  changeData() {
+  changeData (): void {
     this.data = `Default - ${this.child} - ${this.render}`;
   }
 
-  click () {
+  click (): void {
     this.output.emit();
   }
 
-  input (input: any) {}
+  input (input: any): void {}
 }

@@ -7,23 +7,23 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OnpushChildComponent {
-  render = 0;
+  public render = 0;
   @Input() child?: string;
-  @Input() data: string = '';
+  @Input() data?: string;
   @Output() output = new EventEmitter();
 
-  isRendering() {
+  isRendering (): void {
     this.render++;
     console.log(`Onpush - ${this.child} is rendering`);
   }
 
-  changeData() {
+  changeData (): void {
     this.data = `Onpush - ${this.child} - ${this.render}`;
   }
 
-  click () {
+  click (): void {
     this.output.emit();
   }
 
-  input (input: any) {}
+  input (input: any): void {}
 }

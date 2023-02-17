@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
 import { HttpClient } from '@angular/common/http';
 import { delay, lastValueFrom, of, Subscription } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-onpush',
@@ -10,25 +11,25 @@ import { StateService } from 'src/app/service/state.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OnpushComponent {
-  render = 0;
-  output = 0;
-  timer = 0;
-  stateSubscription = 0;
+  public render = 0;
+  public output = 0;
+  public timer = 0;
+  public stateSubscription = 0;
   private subscription?: Subscription;
   private interval?: any;
-  @Input() data: string = '';
-  @Input() stateAsyncPipe: string | null = '';
-  @Input() user?: any;
+  @Input() data?: string = '';
+  @Input() stateAsyncPipe?: string | null  = '';
+  @Input() user?: User;
 
   constructor (
     private stateService: StateService,
-    private cdRef: ChangeDetectorRef,
-    private http: HttpClient
+    private http: HttpClient,
+    private cdRef: ChangeDetectorRef
   ) {
 
   }
 
-  promises () {
+  promises (): void {
     lastValueFrom(of('Promise OnPush').pipe(delay(2000))).then(console.log);
     // const promise = new Promise((resolve, reject) => {
     //   resolve('Promise OnPush');
@@ -37,12 +38,12 @@ export class OnpushComponent {
     // promise.then(console.log)
   }
 
-  request () {
+  request (): void {
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
       .subscribe(console.log);
   }
 
-  initTimer () {
+  initTimer (): void {
     if (!this.interval) {
       this.interval = setInterval(() => {
         this.timer++;
@@ -51,29 +52,29 @@ export class OnpushComponent {
     }
   }
 
-  clearTimer () {
+  clearTimer (): void {
     clearInterval(this.interval);
     this.interval = null;
   }
 
-  isRendering() {
+  isRendering (): void {
     this.render++;
     console.log('Onpush - 1 is rendering');
   }
 
-  changeData() {
+  changeData (): void {
     this.data = 'Onpush - 1 - ' + this.render;
   }
 
-  click() {}
+  click (): void {}
 
   input (input: any) { }
 
-  setOutput () {
+  setOutput (): void {
     this.output++;
   }
 
-  initSubscription () {
+  initSubscription (): void {
     if (!this.subscription) {
       this.subscription = this.stateService.getSubscribe()
       .subscribe((state: number) => {
@@ -83,7 +84,7 @@ export class OnpushComponent {
     }
   }
 
-  stopSubscription () {
+  stopSubscription (): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
       this.subscription = undefined;

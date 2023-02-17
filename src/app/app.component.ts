@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/core';
+import { User } from './components/models/user.model';
 import { StateService } from './service/state.service';
 
 @Component({
@@ -8,9 +9,9 @@ import { StateService } from './service/state.service';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  render = 0;
-  data = 'Data';
-  user = {
+  public render = 0;
+  public data = 'Data';
+  public user: User = {
     name: 'Alex',
     age: 30
   };
@@ -20,22 +21,22 @@ export class AppComponent {
     private cdRef: ChangeDetectorRef
   ) {}
 
-  isRendering() {
+  isRendering (): void {
     console.log('Parent is rendering');
     this.render++;
   }
 
-  changeData() {
+  changeData (): void {
     this.data = 'Parent - ' + this.render;
     // this.data = 'Parent';
   }
 
-  click() {
+  click (): void {
     this.user.age = this.render;
     // this.user = { ...this.user };
   }
 
-  input (input: any) {
+  input (input: any): void {
     this.stateService.setAsyncPipe(input.target.value);
   }
 }

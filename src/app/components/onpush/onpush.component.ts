@@ -17,8 +17,8 @@ export class OnpushComponent {
   public stateSubscription = 0;
   private subscription?: Subscription;
   private interval?: any;
-  @Input() data?: string = '';
-  @Input() stateAsyncPipe?: string | null  = '';
+  @Input() data: string = '';
+  @Input() stateAsyncPipe: string | null  = '';
   @Input() user?: User;
 
   constructor (
@@ -30,7 +30,8 @@ export class OnpushComponent {
   }
 
   promises (): void {
-    lastValueFrom(of('Promise OnPush').pipe(delay(2000))).then(console.log);
+    lastValueFrom(of('Promise OnPush').pipe(delay(2000)))
+      .then(console.log);
     // const promise = new Promise((resolve, reject) => {
     //   resolve('Promise OnPush');
     // });
@@ -40,6 +41,7 @@ export class OnpushComponent {
 
   request (): void {
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
+      .pipe(delay(2000))
       .subscribe(console.log);
   }
 

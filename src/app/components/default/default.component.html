@@ -4,11 +4,6 @@
       <span class="title">Default - 1</span>
       <span>Render: {{render}}</span>
     </div>
-    <div class="actions">
-      <span>Timer: {{timer}}</span>
-      <button (click)="initTimer()">Start</button>
-      <button (click)="clearTimer()">End</button>
-    </div>
     <hr>
     <span>Output: {{output}}</span>
     <hr>
@@ -25,6 +20,12 @@
     </table>
     <hr>
     <div class="actions">
+      <span>Timer: {{timer}}</span>
+      <button (click)="initTimer()">Start</button>
+      <button (click)="clearTimer()">End</button>
+    </div>
+    <hr>
+    <div class="actions">
       <button (click)="promises()">Promises</button>
       <button (click)="request()">Request</button>
     </div>
@@ -36,7 +37,10 @@
       <button (click)="initSubscription()">Start</button>
       <button (click)="stopSubscription()">End</button>
     </div>
-    <input type="text" placeholder="Input text" (input)="input($event)">
+    <div class="actions">
+      <button (click)="click()">Click</button>
+      <input type="text" placeholder="Input text" (input)="input($event)">
+    </div>
   </div>
   <div class="arrows">
     <i class="gg-arrow-bottom-left"></i>

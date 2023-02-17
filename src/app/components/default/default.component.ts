@@ -16,8 +16,8 @@ export class DefaultComponent {
   public stateSubscription = 0;
   private subscription?: Subscription;
   private interval?: any;
-  @Input() data?: string = '';
-  @Input() stateAsyncPipe?: string | null;
+  @Input() data: string = '';
+  @Input() stateAsyncPipe: string | null = '';
   @Input() user?: User;
 
   constructor (
@@ -26,7 +26,8 @@ export class DefaultComponent {
   ) { }
 
   promises (): void {
-    lastValueFrom(of('Promise Default').pipe(delay(2000))).then(console.log);
+    lastValueFrom(of('Promise Default').pipe(delay(2000)))
+      .then(console.log);
     // const promise = new Promise((resolve, reject) => {
     //   resolve('Promise Default');
     // });
@@ -37,6 +38,7 @@ export class DefaultComponent {
 
   request (): void {
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
+      .pipe(delay(2000))
       .subscribe(console.log);
   }
 

@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 export class OnpushChildComponent {
   public render = 0;
   @Input() child?: string;
-  @Input() data?: string;
+  @Input() data: string = '';
   @Output() output = new EventEmitter();
 
   isRendering (): void {

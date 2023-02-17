@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgZone } from '@angular/core';
 import { delay, lastValueFrom, of, Subscription } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
 import { User } from '../models/user.model';
@@ -22,7 +22,8 @@ export class DefaultComponent {
 
   constructor (
     private stateService: StateService,
-    private http: HttpClient
+    private http: HttpClient,
+    private zone: NgZone
   ) { }
 
   promises (): void {
@@ -48,6 +49,13 @@ export class DefaultComponent {
         this.timer++;
       }, 1000);
     }
+    // this.zone.runOutsideAngular(() => {
+    //   if (!this.interval) {
+    //     this.interval = setInterval(() => {
+    //       this.timer++;
+    //     }, 1000);
+    //   }
+    // });
   }
 
   clearTimer (): void {

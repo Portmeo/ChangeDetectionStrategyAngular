@@ -20,7 +20,7 @@ export class DefaultChildComponent {
     this.data = `Default - ${this.child} - ${this.render}`;
   }
 
-  click (): void {
+  mouseEvent (): void {
     this.output.emit();
   }
 

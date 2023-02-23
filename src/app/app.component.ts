@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/core';
-import { User } from './components/models/user.model';
+import { User } from './models/user.model';
 import { StateService } from './service/state.service';
 
 @Component({

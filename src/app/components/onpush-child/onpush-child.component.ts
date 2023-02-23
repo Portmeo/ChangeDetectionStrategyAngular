@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { StateService } from 'src/app/service/state.service';
 
 @Component({
   selector: 'app-onpush-child',
@@ -12,18 +13,32 @@ export class OnpushChildComponent {
   @Input() data: string = '';
   @Output() output = new EventEmitter();
 
-  isRendering (): void {
+  constructor(
+    private stateService: StateService
+  ) { 
+    // this.initSubscription();
+  }
+
+  isRendering(): void {
     this.render++;
     console.log(`Onpush - ${this.child} is rendering`);
   }
 
-  changeData (): void {
+  changeData(): void {
     this.data = `Onpush - ${this.child} - ${this.render}`;
   }
 
-  click (): void {
+  mouseEvent(): void {
     this.output.emit();
   }
 
-  input (input: any): void {}
+  input(input: any): void { }
+
+  initSubscription(): void {
+    this.stateService.getSubscribe()
+      .subscribe(() => {
+        // this.output.emit();
+      });
+  }
 }
+

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, NgZone } from '@angular/core';
 import { delay, lastValueFrom, of, Subscription } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-default',
@@ -39,7 +39,6 @@ export class DefaultComponent {
 
   request (): void {
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
-      .pipe(delay(2000))
       .subscribe(console.log);
   }
 

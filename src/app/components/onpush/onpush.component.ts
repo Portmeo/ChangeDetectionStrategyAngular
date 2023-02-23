@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
 import { HttpClient } from '@angular/common/http';
 import { delay, lastValueFrom, of, Subscription } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-onpush',
@@ -25,9 +25,7 @@ export class OnpushComponent {
     private stateService: StateService,
     private http: HttpClient,
     private cdRef: ChangeDetectorRef
-  ) {
-
-  }
+  ) { }
 
   promises (): void {
     lastValueFrom(of('Promise OnPush').pipe(delay(2000)))

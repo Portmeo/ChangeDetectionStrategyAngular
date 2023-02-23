@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { StateService } from 'src/app/service/state.service';
+import { StateService } from '../../service/state.service';
 
 @Component({
   selector: 'app-onpush-child',

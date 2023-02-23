@@ -1,16 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Component, Input, NgZone } from '@angular/core';
 import { delay, lastValueFrom, of, Subscription } from 'rxjs';
-import { StateService } from 'src/app/service/state.service';
 import { User } from '../../models/user.model';
+import { StateService } from '../../service/state.service';
 
 @Component({
-  selector: 'app-onpush',
-  templateUrl: './onpush.component.html',
-  styleUrls: ['./onpush.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-default',
+  templateUrl: './default.component.html',
+  styleUrls: ['./default.component.scss']
 })
-export class OnpushComponent {
+export class DefaultComponent {
   public render = 0;
   public output = 0;
   public timer = 0;
@@ -18,28 +17,28 @@ export class OnpushComponent {
   private subscription?: Subscription;
   private interval?: any;
   @Input() data: string = '';
-  @Input() stateAsyncPipe: string | null  = '';
+  @Input() stateAsyncPipe: string | null = '';
   @Input() user?: User;
 
   constructor (
     private stateService: StateService,
     private http: HttpClient,
-    private cdRef: ChangeDetectorRef
+    private zone: NgZone
   ) { }
 
   promises (): void {
-    lastValueFrom(of('Promise OnPush').pipe(delay(2000)))
+    lastValueFrom(of('Promise Default').pipe(delay(2000)))
       .then(console.log);
     // const promise = new Promise((resolve, reject) => {
-    //   resolve('Promise OnPush');
+    //   resolve('Promise Default');
     // });
 
     // promise.then(console.log)
   }
 
+
   request (): void {
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
-      .pipe(delay(2000))
       .subscribe(console.log);
   }
 
@@ -47,9 +46,15 @@ export class OnpushComponent {
     if (!this.interval) {
       this.interval = setInterval(() => {
         this.timer++;
-        // this.cdRef.markForCheck();
-       }, 1000);
+      }, 1000);
     }
+    // this.zone.runOutsideAngular(() => {
+    //   if (!this.interval) {
+    //     this.interval = setInterval(() => {
+    //       this.timer++;
+    //     }, 1000);
+    //   }
+    // });
   }
 
   clearTimer (): void {
@@ -59,11 +64,11 @@ export class OnpushComponent {
 
   isRendering (): void {
     this.render++;
-    console.log('Onpush - 1 is rendering');
+    console.log('Default - 1 is rendering');
   }
 
   changeData (): void {
-    this.data = 'Onpush - 1 - ' + this.render;
+    this.data = 'Default - 1 - ' + this.render;
   }
 
   click (): void {}
@@ -79,7 +84,6 @@ export class OnpushComponent {
       this.subscription = this.stateService.getSubscribe()
       .subscribe((state: number) => {
         this.stateSubscription = state;
-        // this.cdRef.markForCheck();
       });
     }
   }

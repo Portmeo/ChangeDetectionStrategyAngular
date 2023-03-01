@@ -16,8 +16,7 @@ export class DemoComponent {
   };
 
   constructor (
-    readonly stateService: StateService,
-    private cdRef: ChangeDetectorRef
+    readonly stateService: StateService
   ) {}
 
   isRendering (): void {
@@ -25,17 +24,26 @@ export class DemoComponent {
     this.render++;
   }
 
-  changeData (): void {
+  changeData (): void {    
+    this.blockEvents(10);
     this.data = 'Parent - ' + this.render;
     // this.data = 'Parent';
   }
 
-  click (): void {
+  click (): void {  
+    this.blockEvents(10);
     this.user.age = this.render;
     // this.user = { ...this.user };
   }
 
   input (input: any): void {
     this.stateService.setAsyncPipe(input.target.value);
+  }
+
+  blockEvents (baseNumber: number) {
+    let result = 0;
+    for (let i = Math.pow(baseNumber, 7); i >= 0; i--) {
+      result += Math.atan(i) * Math.tan(i);
+    }
   }
 }

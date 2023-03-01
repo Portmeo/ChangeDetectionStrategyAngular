@@ -24,13 +24,15 @@ export class DemoComponent {
     this.render++;
   }
 
-  changeData (): void {    
+  changeData (): void {
     this.blockEvents(10);
     this.data = 'Parent - ' + this.render;
     // this.data = 'Parent';
   }
 
-  click (): void {  
+  clickEmpty (): void {}
+
+  click (): void {
     this.blockEvents(10);
     this.user.age = this.render;
     // this.user = { ...this.user };

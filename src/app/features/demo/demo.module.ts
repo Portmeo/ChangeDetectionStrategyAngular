@@ -9,6 +9,7 @@ import { DefaultChildComponent } from './components/default-child/default-child.
 import { OnpushChildComponent } from './components/onpush-child/onpush-child.component';
 import { StateService } from './service/state.service';
 import { DemoRoutingModule } from './demo-routing.module';
+import { TriggerCdComponent } from './components/trigger-cd/trigger-cd.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DemoRoutingModule } from './demo-routing.module';
     DefaultComponent,
     OnpushComponent,
     DefaultChildComponent,
-    OnpushChildComponent
+    OnpushChildComponent,
+    TriggerCdComponent
   ],
   imports: [
     CommonModule,

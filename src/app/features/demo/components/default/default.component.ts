@@ -63,8 +63,8 @@ export class DefaultComponent {
   }
 
   isRendering (): void {
-    this.render++;
     console.log('Default - 1 is rendering');
+    this.render++;
   }
 
   changeData (): void {

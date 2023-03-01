@@ -10,6 +10,8 @@
     <span>Input Data: {{data}}</span>
     <button (click)="changeData()">Change Input Data</button>
     <hr>
+    <span>Input Async Pipe: {{stateAsyncPipe}}</span>
+    <hr>
     <table>
       <thead>
         <tr><th>Name</th><th>Age</th></tr>
@@ -29,8 +31,6 @@
       <button (click)="promises()">Promises</button>
       <button (click)="request()">Request</button>
     </div>
-    <hr>
-    <span>State Async Pipe: {{stateAsyncPipe}}</span>
     <hr>
     <div class="actions">
       <span>Subscription: {{stateSubscription}}</span>

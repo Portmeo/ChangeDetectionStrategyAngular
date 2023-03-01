@@ -58,8 +58,8 @@ export class OnpushComponent {
   }
 
   isRendering (): void {
-    this.render++;
     console.log('Onpush - 1 is rendering');
+    this.render++;
   }
 
   changeData (): void {

@@ -15,13 +15,13 @@ export class OnpushChildComponent {
 
   constructor(
     private stateService: StateService
-  ) { 
+  ) {
     // this.initSubscription();
   }
 
   isRendering(): void {
-    this.render++;
     console.log(`Onpush - ${this.child} is rendering`);
+    this.render++;
   }
 
   changeData(): void {

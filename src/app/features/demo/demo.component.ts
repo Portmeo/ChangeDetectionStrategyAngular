@@ -1,13 +1,14 @@
-import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { User } from './models/user.model';
 import { StateService } from './service/state.service';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.scss']
+  styleUrls: ['./demo.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DemoComponent {
+export class DemoComponent implements AfterViewInit {
   public render = 0;
   public data = 'Data';
   public user: User = {
@@ -19,33 +20,32 @@ export class DemoComponent {
     readonly stateService: StateService
   ) {}
 
+  ngAfterViewInit(): void {
+    console.log('after view');
+
+    // this.user.age = this.render;
+    // this.data = 'Parent' + this.render;
+  }
+
   isRendering (): void {
     console.log('Parent is rendering');
     this.render++;
   }
 
   changeData (): void {
-    this.blockEvents(10);
     this.data = 'Parent - ' + this.render;
     // this.data = 'Parent';
+    // this.stateService.setAsyncPipe('Parent');
   }
 
   clickEmpty (): void {}
 
   click (): void {
-    this.blockEvents(10);
     this.user.age = this.render;
     // this.user = { ...this.user };
   }
 
   input (input: any): void {
     this.stateService.setAsyncPipe(input.target.value);
-  }
-
-  blockEvents (baseNumber: number) {
-    let result = 0;
-    for (let i = Math.pow(baseNumber, 7); i >= 0; i--) {
-      result += Math.atan(i) * Math.tan(i);
-    }
   }
 }

@@ -33,10 +33,12 @@
   <div class="children">
     <app-default
       [data]="data"
+      [stateAsyncPipe]="stateService.getAsyncPipe() | async"
       [user]="user">
     </app-default>
     <app-onpush
       [data]="data"
+      [stateAsyncPipe]="stateService.getAsyncPipe() | async"
       [user]="user">
     </app-onpush>
   </div>

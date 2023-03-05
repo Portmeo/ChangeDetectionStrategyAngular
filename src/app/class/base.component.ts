@@ -1,5 +1,4 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { StateService } from '../features/demo/service/state.service';
 
 @Component({
@@ -24,7 +23,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
   ) {  }
 
   ngOnChanges(_changes: SimpleChanges): void {
-    console.log(`ONCHANGE -- ${this.name} ${this.child} ${this.data}`);
+    // console.log(`ONCHANGE -- ${this.name} ${this.child} ${this.data}`);
   }
 
   ngAfterViewInit(): void {
@@ -44,6 +43,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
     if (!this.interval) {
       this.interval = setInterval(() => {
         this.timer++;
+        // this.cdRef.markForCheck();
       }, 1000);
     }
     // this.zone.runOutsideAngular(() => {
@@ -62,11 +62,11 @@ export class BaseComponent implements AfterViewInit, OnChanges {
   }
 
   promises (): void {
-    this.stateService.getPromise().then(() => console.log('Promise resolve'));
+    this.stateService.onPromise().then(() => console.log('Promise resolve'));
   }
 
   request (): void {
-    this.stateService.getRequest()
+    this.stateService.onRequest()
       .subscribe(console.log);
   }
 

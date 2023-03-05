@@ -20,13 +20,13 @@ export class StateService {
     this.stateAsyncPipe.next(asyncPipe);
   }
 
-  getPromise (): Promise<any>  {
+  onPromise (): Promise<any>  {
     return new Promise(resolve =>
       setTimeout(resolve, 2000)
     );
   }
 
-  getRequest (): Observable<any> {
+  onRequest (): Observable<any> {
     return this.http.get<any>(environment.urlApi)
   }
 

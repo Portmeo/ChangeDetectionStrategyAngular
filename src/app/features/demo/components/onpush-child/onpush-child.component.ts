@@ -20,7 +20,7 @@ export class OnpushChildComponent extends BaseComponent  {
   }
 
   override request (): void {
-    this.stateService.getRequest()
+    this.stateService.onRequest()
       .subscribe((response) => {
         console.log(response);
         this.outputEvent.emit();

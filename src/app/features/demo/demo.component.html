@@ -24,7 +24,7 @@
     </table>
     <button (click)="changeObject()">Change User Age</button>
     <hr>
-    <div class="actions">
+    <div>
         <span>State: {{stateService.getAsyncPipe() | async}}</span>
         <input type="text" placeholder="Update State Async Pipe" (input)="inputAsyncPipe($event)">
     </div>
@@ -41,7 +41,7 @@
     <app-default
       [data]="data"
       [stateAsyncPipe]="stateService.getAsyncPipe() | async"
-      [user]="user">
+      [user]="user$ | async">
     </app-default>
     <app-onpush
       [data]="data"

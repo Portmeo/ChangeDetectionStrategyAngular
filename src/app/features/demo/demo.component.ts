@@ -14,7 +14,8 @@ export class DemoComponent extends BaseComponent {
     name: 'Alex',
     age: 30
   };
-  public user$: BehaviorSubject<User> = new BehaviorSubject<User>(this.user)
+
+  public user$: BehaviorSubject<User> = new BehaviorSubject<User>(this.user);
 
   constructor (
     stateService: StateService,

@@ -1,7 +1,7 @@
 <div class="parent">
   <div class="child">
     <div class="header">
-      <span class="title">Onpush - 1</span>
+      <span class="title">{{name}}</span>
       <span>Render: {{render}}</span>
     </div>
     <hr>
@@ -9,8 +9,6 @@
     <hr>
     <span>Input Data: {{data}}</span>
     <button (click)="changeData()">Change Input Data</button>
-    <hr>
-    <span>Input Async Pipe: {{stateAsyncPipe}}</span>
     <hr>
     <table>
       <thead>
@@ -20,6 +18,8 @@
         <tr><td>{{user?.name}}</td><td>{{user?.age}}</td></tr>
       </tbody>
     </table>
+    <hr>
+    <span>Input Async Pipe: {{stateAsyncPipe}}</span>
     <hr>
     <div class="actions">
       <span>Timer: {{timer}}</span>
@@ -38,8 +38,8 @@
       <button (click)="stopSubscription()">End</button>
     </div>
     <div class="actions">
-      <button (click)="click()">Click</button>
-      <input type="text" placeholder="Input text" (input)="input($event)">
+      <button (click)="clickEmpty()">Click</button>
+      <input type="text" placeholder="Input text" (input)="inputEmpty($event)">
     </div>
   </div>
   <div class="arrows">
@@ -50,13 +50,13 @@
     <app-onpush-child
       [child]="'2'"
       [data]="data"
-      (output)="setOutput()">
+      (outputEvent)="setOutput()">
     </app-onpush-child>
     <app-onpush-child
       [child]="'3'"
       [data]="data"
-      (output)="setOutput()">
+      (outputEvent)="setOutput()">
     </app-onpush-child>
   </div>
 </div>
-{{isRendering()}}
+{{isRendering(name)}}

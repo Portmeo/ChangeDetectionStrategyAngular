@@ -1,7 +1,7 @@
 <div class="parent">
   <div class="root">
     <div class="header">
-      <span class="title">Root </span>
+      <span class="title">{{name}}</span>
       <span>Render: {{render}}</span>
     </div>
     <hr>
@@ -22,13 +22,13 @@
         </tr>
       </tbody>
     </table>
-    <button (click)="click()">Change User Age</button>
+    <button (click)="changeObject()">Change User Age</button>
     <hr>
     <div class="actions">
       <button (click)="clickEmpty()">Click</button>
       <div>
         <span>State: {{stateService.getAsyncPipe() | async}}</span>
-        <input type="text" placeholder="Update State Async Pipe" (input)="input($event)">
+        <input type="text" placeholder="Update State Async Pipe" (input)="inputAsyncPipe($event)">
       </div>
     </div>
   </div>
@@ -45,10 +45,10 @@
     <app-onpush
       [data]="data"
       [stateAsyncPipe]="stateService.getAsyncPipe() | async"
-      [user]="user$ | async">
+      [user]="user">
     </app-onpush>
   </div>
 </div>
 <app-behavior-cd>
 </app-behavior-cd>
-{{isRendering()}}
+{{isRendering(name)}}

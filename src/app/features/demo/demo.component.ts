@@ -1,5 +1,6 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { BaseComponent } from 'src/app/class/base.component';
 import { User } from './models/user.model';
 import { StateService } from './service/state.service';
 
@@ -8,9 +9,8 @@ import { StateService } from './service/state.service';
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
 })
-export class DemoComponent implements AfterViewInit {
-  public render = 0;
-  public data = 'Data';
+export class DemoComponent extends BaseComponent {
+  public name = 'Root';
   public user: User = {
     name: 'Alex',
     age: 30
@@ -18,34 +18,26 @@ export class DemoComponent implements AfterViewInit {
   public user$: BehaviorSubject<User> = new BehaviorSubject<User>(this.user)
 
   constructor (
-    readonly stateService: StateService
-  ) {  }
-
-  ngAfterViewInit(): void {
-    // this.user.age = this.render;
-    // this.data = 'Root' + this.render;
-  }
-
-  isRendering (): void {
-    console.log('Root is rendering');
-    this.render++;
+    stateService: StateService,
+    zone: NgZone,
+    cdRef: ChangeDetectorRef
+  ) {
+    super(stateService, zone, cdRef)
   }
 
   changeData (): void {
-    this.data = 'Root - ' + this.render;
-    // this.data = 'Root';
-    // this.stateService.setAsyncPipe('Root');
+    this.data = this.name;
+    // this.data = `${this.name} - ${this.render}`;
+    // this.stateService.setAsyncPipe(this.name);
   }
 
-  clickEmpty (): void {}
-
-  click (): void {
+  changeObject (): void {
     this.user.age = this.render;
     // this.user = { ...this.user };
     // this.user$.next(this.user);
   }
 
-  input (input: any): void {
+  inputAsyncPipe (input: any): void {
     this.stateService.setAsyncPipe(input.target.value);
   }
 }

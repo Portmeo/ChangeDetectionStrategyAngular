@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone } from '@angular/core';
+import { BaseComponent } from 'src/app/class/base.component';
+import { StateService } from '../../service/state.service';
 
 @Component({
   selector: 'app-onpush-child',
@@ -8,37 +8,28 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./onpush-child.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OnpushChildComponent {
-  public render = 0;
-  @Input() child?: string;
-  @Input() data: string = '';
-  @Output() output = new EventEmitter();
+export class OnpushChildComponent extends BaseComponent  {
+  public name = 'OnPush -';
 
-  constructor(
-    private http: HttpClient,
-  ) { }
-
-  isRendering(): void {
-    console.log(`Onpush - ${this.child} is rendering`);
-    this.render++;
+  constructor (
+    stateService: StateService,
+    zone: NgZone,
+    cdRef: ChangeDetectorRef
+  ) {
+    super(stateService, zone, cdRef)
   }
 
-  request (): void {
-    this.http.get<any>(environment.urlApi)
+  override request (): void {
+    this.stateService.getRequest()
       .subscribe((response) => {
         console.log(response);
-        this.output.emit();
+        this.outputEvent.emit();
       });
   }
 
   changeData(): void {
-    this.data = `Onpush - ${this.child} - ${this.render}`;
+    this.data = `${this.name} ${this.child} ${this.render}`;
   }
 
-  mouseEvent(): void {
-    this.output.emit();
-  }
-
-  input(input: any): void { }
 }
 

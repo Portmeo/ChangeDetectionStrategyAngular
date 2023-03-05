@@ -1,11 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { timer } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class StateService {
   private stateAsyncPipe: BehaviorSubject<string> = new BehaviorSubject('');
-  private stateSubscription = timer(0, 2000);
+  private stateSubscription: BehaviorSubject<string> = new BehaviorSubject('');
+
+  constructor (
+    private http: HttpClient
+  ) {}
 
   getAsyncPipe (): Observable<string> {
     return this.stateAsyncPipe.asObservable();
@@ -15,8 +21,22 @@ export class StateService {
     this.stateAsyncPipe.next(asyncPipe);
   }
 
-  getSubscribe (): Observable<number> {
-    return this.stateSubscription;
+  getSubscribe (): Observable<string> {
+    return this.stateSubscription.asObservable();
+  }
+
+  setSubscribe (subsribe: string): void {
+    this.stateSubscription.next(subsribe);
+  }
+
+  getPromise (): Promise<any>  {
+    return new Promise(resolve =>
+      setTimeout(resolve, 2000)
+    );
+  }
+
+  getRequest (): Observable<any> {
+    return this.http.get<any>(environment.urlApi)
   }
 
   blockEvents (baseNumber: number): void {

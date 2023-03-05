@@ -1,7 +1,7 @@
 <div class="parent">
   <div class="root">
     <div class="header">
-      <span class="title">Parent </span>
+      <span class="title">Root </span>
       <span>Render: {{render}}</span>
     </div>
     <hr>
@@ -10,10 +10,16 @@
     <hr>
     <table>
       <thead>
-        <tr><th>Name</th><th>Age</th></tr>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td>{{user.name}}</td><td>{{user.age}}</td></tr>
+        <tr>
+          <td>{{user.name}}</td>
+          <td>{{user.age}}</td>
+        </tr>
       </tbody>
     </table>
     <button (click)="click()">Change User Age</button>
@@ -39,10 +45,10 @@
     <app-onpush
       [data]="data"
       [stateAsyncPipe]="stateService.getAsyncPipe() | async"
-      [user]="user">
+      [user]="user$ | async">
     </app-onpush>
   </div>
 </div>
-<app-trigger-cd>
-</app-trigger-cd>
+<app-behavior-cd>
+</app-behavior-cd>
 {{isRendering()}}

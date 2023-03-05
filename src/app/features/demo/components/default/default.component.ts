@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, NgZone } from '@angular/core';
 import { delay, lastValueFrom, of, Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../../models/user.model';
 import { StateService } from '../../service/state.service';
 
@@ -18,7 +19,7 @@ export class DefaultComponent {
   private interval?: any;
   @Input() data: string = '';
   @Input() stateAsyncPipe: string | null = '';
-  @Input() user?: User;
+  @Input() user?: User | null;
 
   constructor (
     private stateService: StateService,
@@ -38,7 +39,7 @@ export class DefaultComponent {
 
 
   request (): void {
-    this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
+    this.http.get<any>(environment.urlApi)
       .subscribe(console.log);
   }
 

@@ -1,4 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { User } from './models/user.model';
 import { StateService } from './service/state.service';
 
@@ -6,7 +7,6 @@ import { StateService } from './service/state.service';
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DemoComponent implements AfterViewInit {
   public render = 0;
@@ -15,27 +15,26 @@ export class DemoComponent implements AfterViewInit {
     name: 'Alex',
     age: 30
   };
+  public user$: BehaviorSubject<User> = new BehaviorSubject<User>(this.user)
 
   constructor (
     readonly stateService: StateService
-  ) {}
+  ) {  }
 
   ngAfterViewInit(): void {
-    console.log('after view');
-
     // this.user.age = this.render;
-    // this.data = 'Parent' + this.render;
+    // this.data = 'Root' + this.render;
   }
 
   isRendering (): void {
-    console.log('Parent is rendering');
+    console.log('Root is rendering');
     this.render++;
   }
 
   changeData (): void {
-    this.data = 'Parent - ' + this.render;
-    // this.data = 'Parent';
-    // this.stateService.setAsyncPipe('Parent');
+    this.data = 'Root - ' + this.render;
+    // this.data = 'Root';
+    // this.stateService.setAsyncPipe('Root');
   }
 
   clickEmpty (): void {}
@@ -43,6 +42,7 @@ export class DemoComponent implements AfterViewInit {
   click (): void {
     this.user.age = this.render;
     // this.user = { ...this.user };
+    // this.user$.next(this.user);
   }
 
   input (input: any): void {

@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { StateService } from '../../service/state.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-onpush-child',
@@ -14,14 +15,20 @@ export class OnpushChildComponent {
   @Output() output = new EventEmitter();
 
   constructor(
-    private stateService: StateService
-  ) {
-    // this.initSubscription();
-  }
+    private http: HttpClient,
+  ) { }
 
   isRendering(): void {
     console.log(`Onpush - ${this.child} is rendering`);
     this.render++;
+  }
+
+  request (): void {
+    this.http.get<any>(environment.urlApi)
+      .subscribe((response) => {
+        console.log(response);
+        this.output.emit();
+      });
   }
 
   changeData(): void {
@@ -33,12 +40,5 @@ export class OnpushChildComponent {
   }
 
   input(input: any): void { }
-
-  initSubscription(): void {
-    this.stateService.getSubscribe()
-      .subscribe(() => {
-        // this.output.emit();
-      });
-  }
 }
 

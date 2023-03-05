@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { delay, lastValueFrom, of, Subscription } from 'rxjs';
 import { User } from '../../models/user.model';
 import { StateService } from '../../service/state.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-onpush',
@@ -19,7 +20,7 @@ export class OnpushComponent {
   private interval?: any;
   @Input() data: string = '';
   @Input() stateAsyncPipe: string | null  = '';
-  @Input() user?: User;
+  @Input() user?: User | null;
 
   constructor (
     private stateService: StateService,
@@ -38,8 +39,7 @@ export class OnpushComponent {
   }
 
   request (): void {
-    this.http.get<any>('https://pokeapi.co/api/v2/pokemon/ditto')
-      .pipe(delay(2000))
+    this.http.get<any>(environment.urlApi)
       .subscribe(console.log);
   }
 

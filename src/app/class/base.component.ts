@@ -62,22 +62,6 @@ export class BaseComponent implements AfterViewInit, OnChanges {
     this.interval = null;
   }
 
-  initSubscription (): void {
-    if (!this.subscription) {
-      this.subscription = this.stateService.getSubscribe()
-      .subscribe((state: string) => {
-        this.stateSubscription = state;
-      });
-    }
-  }
-
-  stopSubscription (): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-      this.subscription = undefined;
-    }
-  }
-
   promises (): void {
     this.stateService.getPromise().then(() => console.log('Promise OnPush'));
   }

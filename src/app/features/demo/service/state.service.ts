@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class StateService {
   private stateAsyncPipe: BehaviorSubject<string> = new BehaviorSubject('');
-  private stateSubscription: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor (
     private http: HttpClient
@@ -19,14 +18,6 @@ export class StateService {
 
   setAsyncPipe (asyncPipe: string): void {
     this.stateAsyncPipe.next(asyncPipe);
-  }
-
-  getSubscribe (): Observable<string> {
-    return this.stateSubscription.asObservable();
-  }
-
-  setSubscribe (subsribe: string): void {
-    this.stateSubscription.next(subsribe);
   }
 
   getPromise (): Promise<any>  {

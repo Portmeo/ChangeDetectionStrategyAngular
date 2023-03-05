@@ -11,8 +11,6 @@ export class BaseComponent implements AfterViewInit, OnChanges {
   render = 0;
   output = 0;
   timer = 0;
-  stateSubscription = '';
-  subscription?: Subscription;
   interval?: any;
 
   @Input() data: string = '';

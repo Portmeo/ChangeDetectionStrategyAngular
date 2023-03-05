@@ -9,14 +9,14 @@ import { StateService } from '../../service/state.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OnpushChildComponent extends BaseComponent  {
-  public name = 'OnPush -';
 
   constructor (
     stateService: StateService,
     zone: NgZone,
     cdRef: ChangeDetectorRef
   ) {
-    super(stateService, zone, cdRef)
+    super(stateService, zone, cdRef);
+    this.name = 'OnPush -';
   }
 
   override request (): void {

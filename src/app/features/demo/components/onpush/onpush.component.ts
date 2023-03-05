@@ -10,7 +10,6 @@ import { StateService } from '../../service/state.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OnpushComponent extends BaseComponent {
-  public name = 'OnPush - 1'
   @Input() stateAsyncPipe: string | null  = '';
   @Input() user?: User | null;
 
@@ -19,7 +18,8 @@ export class OnpushComponent extends BaseComponent {
     zone: NgZone,
     cdRef: ChangeDetectorRef
   ) {
-    super(stateService, zone, cdRef)
+    super(stateService, zone, cdRef);
+    this.name = 'OnPush - 1';
   }
 
   changeData (): void {

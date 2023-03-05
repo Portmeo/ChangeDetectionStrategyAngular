@@ -25,11 +25,12 @@
     <button (click)="changeObject()">Change User Age</button>
     <hr>
     <div class="actions">
-      <button (click)="clickEmpty()">Click</button>
-      <div>
         <span>State: {{stateService.getAsyncPipe() | async}}</span>
         <input type="text" placeholder="Update State Async Pipe" (input)="inputAsyncPipe($event)">
-      </div>
+    </div>
+    <div class="actions">
+      <button (click)="clickEmpty()">Click</button>
+      <input type="text" placeholder="Input text" (input)="inputEmpty($event)">
     </div>
   </div>
   <div class="arrows">

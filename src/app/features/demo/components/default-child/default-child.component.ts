@@ -8,14 +8,13 @@ import { StateService } from '../../service/state.service';
   styleUrls: ['./default-child.component.scss']
 })
 export class DefaultChildComponent extends BaseComponent {
-  public name = 'Default -';
-
   constructor (
     stateService: StateService,
     zone: NgZone,
     cdRef: ChangeDetectorRef
   ) {
-    super(stateService, zone, cdRef)
+    super(stateService, zone, cdRef);
+    this.name = 'Default -';
   }
 
   override request (): void {

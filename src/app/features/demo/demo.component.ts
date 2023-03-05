@@ -10,7 +10,6 @@ import { StateService } from './service/state.service';
   styleUrls: ['./demo.component.scss'],
 })
 export class DemoComponent extends BaseComponent {
-  public name = 'Root';
   public user: User = {
     name: 'Alex',
     age: 30
@@ -22,7 +21,8 @@ export class DemoComponent extends BaseComponent {
     zone: NgZone,
     cdRef: ChangeDetectorRef
   ) {
-    super(stateService, zone, cdRef)
+    super(stateService, zone, cdRef);
+    this.name = 'Root';
   }
 
   changeData (): void {

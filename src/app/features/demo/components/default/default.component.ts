@@ -9,7 +9,6 @@ import { StateService } from '../../service/state.service';
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent extends BaseComponent  {
-  public name = 'Default - 1';
   @Input() stateAsyncPipe: string | null = '';
   @Input() user?: User | null;
 
@@ -18,7 +17,8 @@ export class DefaultComponent extends BaseComponent  {
     zone: NgZone,
     cdRef: ChangeDetectorRef
   ) {
-    super(stateService, zone, cdRef)
+    super(stateService, zone, cdRef);
+    this.name = 'Default - 1';
   }
 
   changeData (): void {

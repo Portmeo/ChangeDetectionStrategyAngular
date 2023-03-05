@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, NgZone, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StateService } from '../features/demo/service/state.service';
 
@@ -6,7 +6,8 @@ import { StateService } from '../features/demo/service/state.service';
   selector: '',
   template: '',
 })
-export class BaseComponent {
+export class BaseComponent implements AfterViewInit, OnChanges {
+  name = '';
   render = 0;
   output = 0;
   timer = 0;
@@ -15,7 +16,7 @@ export class BaseComponent {
   interval?: any;
 
   @Input() data: string = '';
-  @Input() child?: string;
+  @Input() child: string = '';
   @Output() outputEvent = new EventEmitter();
 
   constructor (
@@ -23,6 +24,14 @@ export class BaseComponent {
     readonly zone: NgZone,
     readonly cdRef: ChangeDetectorRef
   ) {  }
+
+  ngOnChanges(_changes: SimpleChanges): void {
+    console.log(`ONCHANGE -- ${this.name} ${this.child} ${this.data}`);
+  }
+
+  ngAfterViewInit(): void {
+    console.log(`AFTER_VIEW_INIT -- ${this.name} ${this.child} ${this.data}`);
+  }
 
   isRendering (name: string): void {
     console.log(`${name} is rendering`);

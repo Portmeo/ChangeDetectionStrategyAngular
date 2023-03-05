@@ -46,7 +46,7 @@
     <app-onpush
       [data]="data"
       [stateAsyncPipe]="stateService.getAsyncPipe() | async"
-      [user]="user">
+      [user]="user$ | async">
     </app-onpush>
   </div>
 </div>

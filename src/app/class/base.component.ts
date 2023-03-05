@@ -52,6 +52,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
     //   if (!this.interval) {
     //     this.interval = setInterval(() => {
     //       this.timer++;
+    //       this.timer % 5 == 0 && this.cdRef.detectChanges();
     //     }, 1000);
     //   }
     // });
@@ -63,7 +64,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
   }
 
   promises (): void {
-    this.stateService.getPromise().then(() => console.log('Promise OnPush'));
+    this.stateService.getPromise().then(() => console.log('Promise resolve'));
   }
 
   request (): void {

@@ -37,7 +37,7 @@ export class DemoComponent extends BaseComponent {
   changeObject (): void {
     this.user.age = this.render;
     // this.user = { ...this.user };
-    this.user$.next(this.user);
+    // this.user$.next(this.user);
   }
 
   inputAsyncPipe (input: any): void {

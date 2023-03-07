@@ -1,15 +1,22 @@
 <div class="parent">
   <div class="child">
+
     <div class="header">
       <span class="title">{{name}}</span>
       <span>Render: {{render}}</span>
     </div>
+
     <hr>
+
     <span>Output: {{output}}</span>
+
     <hr>
+
     <span>Input Data: {{data}}</span>
     <button (click)="changeData()">Change Input Data</button>
+
     <hr>
+
     <table>
       <thead>
         <tr><th>Name</th><th>Age</th></tr>
@@ -18,29 +25,40 @@
         <tr><td>{{user?.name}}</td><td>{{user?.age}}</td></tr>
       </tbody>
     </table>
+
     <hr>
+
     <span>Input Async Pipe: {{stateAsyncPipe}}</span>
+
     <hr>
+
     <div class="actions">
       <span>Timer: {{timer}}</span>
       <button (click)="initTimer()">Start</button>
       <button (click)="clearTimer()">End</button>
     </div>
+
     <hr>
+
     <div class="actions">
       <button (click)="promises()">Promises</button>
       <button (click)="request()">Request</button>
     </div>
+
     <hr>
+
     <div class="actions">
       <button (click)="clickEmpty()">Click</button>
       <input type="text" placeholder="Input text" (input)="inputEmpty($event)">
     </div>
+
   </div>
+
   <div class="arrows">
     <i class="gg-arrow-bottom-left"></i>
     <i class="gg-arrow-bottom-right"></i>
   </div>
+
   <div class="children">
     <app-onpush-child
       [child]="'2'"
@@ -53,5 +71,6 @@
       (outputEvent)="setOutput()">
     </app-onpush-child>
   </div>
+
 </div>
 {{isRendering(name)}}

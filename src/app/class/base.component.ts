@@ -43,6 +43,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
     if (!this.interval) {
       this.interval = setInterval(() => {
         this.timer++;
+        // this.cdRef.detectChanges();
         // this.cdRef.markForCheck();
       }, 1000);
     }
@@ -72,5 +73,5 @@ export class BaseComponent implements AfterViewInit, OnChanges {
 
   clickEmpty (): void {}
 
-  inputEmpty (input: any): void { }
+  inputEmpty (_input: any): void { }
 }

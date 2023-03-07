@@ -1,14 +1,19 @@
 <div class="child">
+
   <div class="header">
     <span class="title">{{name}} {{child}}</span>
     <span>Render: {{render}}</span>
   </div>
+
   <span>Input Data: {{data}}</span>
+
   <button (click)="changeData()">Change Data</button>
-  <button (click)="request()">Request</button>
+  <button (click)="request()">Request -> Output</button>
+
   <div class="actions">
     <button (click)="clickEmpty()">Click</button>
     <input type="text" placeholder="Input text" (input)="inputEmpty($event)">
   </div>
+
 </div>
 {{isRendering(name + child)}}

@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class StateService {
   private stateAsyncPipe$: BehaviorSubject<string> = new BehaviorSubject('');
-  private signals = signal(0);
+  private signals = signal<number>(0);
 
   constructor (
     private http: HttpClient
@@ -23,7 +23,7 @@ export class StateService {
   getAsyncPipe (): Observable<string> {
     return this.stateAsyncPipe$.asObservable()
       .pipe(
-        filter((value) => value !== ''),
+        // filter((value) => value !== ''),
         // tap(console.log)
       );
   }

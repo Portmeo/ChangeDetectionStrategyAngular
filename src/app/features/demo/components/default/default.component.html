@@ -3,8 +3,8 @@
 
     <div class="header">
       <span class="title">{{name}}</span>
-      <span>CD: {{cd}}</span>
       <span>SG: {{stateService.getSignals()}}</span>
+      <span>CD: {{cd}}</span>
     </div>
 
     <hr>
@@ -64,12 +64,12 @@
     <app-default-child
       [child]="'2'"
       [data]="data"
-      (outputEvent)="setOutput()">
+      (outputEvent)="setOutput($event)">
     </app-default-child>
     <app-default-child
       [child]="'3'"
       [data]="data"
-      (outputEvent)="setOutput()">
+      (outputEvent)="setOutput($event)">
     </app-default-child>
   </div>
 

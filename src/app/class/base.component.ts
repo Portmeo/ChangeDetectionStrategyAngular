@@ -35,8 +35,9 @@ export class BaseComponent implements AfterViewInit, OnChanges {
     this.cd += 1;
   }
 
-  setOutput (): void {
+  setOutput (value: any): void {
     this.output += 1;
+    // this.data = value;
   }
 
   initTimer (): void {

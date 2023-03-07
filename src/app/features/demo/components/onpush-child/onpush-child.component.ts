@@ -23,7 +23,7 @@ export class OnpushChildComponent extends BaseComponent  {
     this.stateService.onRequest()
       .subscribe((response) => {
         console.log(response);
-        this.outputEvent.emit();
+        this.outputEvent.emit(response[0].title);
       });
   }
 

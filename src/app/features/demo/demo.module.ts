@@ -8,7 +8,6 @@ import { DefaultChildComponent } from './components/default-child/default-child.
 import { OnpushChildComponent } from './components/onpush-child/onpush-child.component';
 import { StateService } from './services/state.service';
 import { DemoRoutingModule } from './demo-routing.module';
-import { SignalsComponent } from './components/signals/signals.component';
 import { BehaviorCdComponent } from './components/behavior-cd/behavior-cd.component';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { BehaviorCdComponent } from './components/behavior-cd/behavior-cd.compon
     OnpushComponent,
     DefaultChildComponent,
     OnpushChildComponent,
-    SignalsComponent,
     BehaviorCdComponent
   ],
   imports: [

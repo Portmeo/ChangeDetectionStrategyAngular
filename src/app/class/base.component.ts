@@ -71,7 +71,9 @@ export class BaseComponent implements AfterViewInit, OnChanges {
       .subscribe(console.log);
   }
 
-  clickEmpty (): void { }
+  clickEmpty (): void {
+    // this.stateService.setSignals();
+  }
 
   inputEmpty (_input: Event): void { }
 }

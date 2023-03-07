@@ -1,15 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject, filter, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class StateService {
   private stateAsyncPipe: BehaviorSubject<string> = new BehaviorSubject('');
+  private signals = signal(0);
 
   constructor (
     private http: HttpClient
   ) {}
+
+  getSignals () {
+    return this.signals();
+  }
+
+  setSignals (): void {
+    this.signals.set(this.signals() + 1);
+  }
 
   getAsyncPipe (): Observable<string> {
     return this.stateAsyncPipe.asObservable()

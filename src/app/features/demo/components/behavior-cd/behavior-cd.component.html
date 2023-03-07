@@ -1,14 +1,14 @@
-<div class="dispatch-cd">
-  <span class="title">Change Detection</span>
+<div class="behavior-cd">
+  <span class="title">Change Detection (CD) Strategy</span>
   <table>
     <thead>
-      <tr><th>TRIGGERS</th><th>DEFAULT</th><th>ONPUSH</th></tr>
+      <tr><th></th><th>DEFAULT</th><th>ONPUSH</th></tr>
     </thead>
     <Tbody>
       <tr>
         <td>Inputs</td>
         <td><span>&#10003;</span></td>
-        <td><span>&#10003; (If the value changes)</span></td>
+        <td><span>&#10003;(If the value changes)</span></td>
       </tr>
       <tr>
         <td>Inputs (Mutability)</td>
@@ -16,19 +16,14 @@
         <td><span>&#x2715;</span></td>
       </tr>
       <tr>
-        <td>Outputs</td>
-        <td><span>&#10003;</span></td>
-        <td><span>&#10003;</span></td>
-      </tr>
-      <tr>
         <td>Mouse Events</td>
         <td><span>&#10003;</span></td>
-        <td><span>&#10003;</span></td>
+        <td><span>&#10003;(own, child component)</span></td>
       </tr>
       <tr>
         <td>Keyboard Events</td>
         <td><span>&#10003;</span></td>
-        <td><span>&#10003;</span></td>
+        <td><span>&#10003;(own, child component)</span></td>
       </tr>
       <tr>
         <td>Timers</td>
@@ -46,9 +41,9 @@
         <td><span>&#x2715;</span></td>
       </tr>
       <tr>
-        <td>Subscription</td>
+        <td>Outputs</td>
         <td><span>&#10003;</span></td>
-        <td><span>&#x2715;</span></td>
+        <td><span>&#10003;</span></td>
       </tr>
     </Tbody>
   </table>

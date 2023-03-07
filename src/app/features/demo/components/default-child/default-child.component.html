@@ -1,10 +1,19 @@
 <div class="child">
+
   <div class="header">
-    <span class="title">DEFAULT - {{child}}</span>
-    <span>Render: {{render}}</span>
+    <span class="title">{{name}} {{child}}</span>
+    <span>CD: {{cd}}</span>
   </div>
+
   <span>Input Data: {{data}}</span>
+
   <button (click)="changeData()">Change Data</button>
-  <span class="hover" (mouseenter)="mouseEvent()">Hover</span>
+  <button (click)="request()">Request -> Output</button>
+
+  <div class="actions">
+    <button (click)="clickEmpty()">Click</button>
+    <input type="text" placeholder="Input text" (input)="inputEmpty($event)">
+  </div>
+
 </div>
-{{isRendering()}}
+{{changeDetection(name + child)}}

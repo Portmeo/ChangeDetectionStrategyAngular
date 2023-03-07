@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { StateService } from '../../service/state.service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone } from '@angular/core';
+import { BaseComponent } from 'src/app/class/base.component';
+import { StateService } from '../../services/state.service';
 
 @Component({
   selector: 'app-onpush-child',
@@ -7,38 +8,28 @@ import { StateService } from '../../service/state.service';
   styleUrls: ['./onpush-child.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OnpushChildComponent {
-  public render = 0;
-  @Input() child?: string;
-  @Input() data: string = '';
-  @Output() output = new EventEmitter();
+export class OnpushChildComponent extends BaseComponent  {
 
-  constructor(
-    private stateService: StateService
+  constructor (
+    stateService: StateService,
+    zone: NgZone,
+    cdRef: ChangeDetectorRef
   ) {
-    // this.initSubscription();
+    super(stateService, zone, cdRef);
+    this.name = 'OnPush -';
   }
 
-  isRendering(): void {
-    console.log(`Onpush - ${this.child} is rendering`);
-    this.render++;
+  override request (): void {
+    this.stateService.onRequest()
+      .subscribe((response) => {
+        console.log(response);
+        this.outputEvent.emit();
+      });
   }
 
   changeData(): void {
-    this.data = `Onpush - ${this.child} - ${this.render}`;
+    this.data = `${this.name} ${this.child} ${this.cd}`;
   }
 
-  mouseEvent(): void {
-    this.output.emit();
-  }
-
-  input(input: any): void { }
-
-  initSubscription(): void {
-    this.stateService.getSubscribe()
-      .subscribe(() => {
-        // this.output.emit();
-      });
-  }
 }
 

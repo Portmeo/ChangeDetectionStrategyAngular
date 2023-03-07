@@ -1,51 +1,47 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
+import { BehaviorSubject, tap } from 'rxjs';
+import { BaseComponent } from 'src/app/class/base.component';
 import { User } from './models/user.model';
-import { StateService } from './service/state.service';
+import { StateService } from './services/state.service';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DemoComponent implements AfterViewInit {
-  public render = 0;
-  public data = 'Data';
+export class DemoComponent extends BaseComponent {
   public user: User = {
     name: 'Alex',
     age: 30
   };
 
+  public user$: BehaviorSubject<User> = new BehaviorSubject<User>(this.user);
+
   constructor (
-    readonly stateService: StateService
-  ) {}
-
-  ngAfterViewInit(): void {
-    console.log('after view');
-
-    // this.user.age = this.render;
-    // this.data = 'Parent' + this.render;
-  }
-
-  isRendering (): void {
-    console.log('Parent is rendering');
-    this.render++;
+    stateService: StateService,
+    zone: NgZone,
+    cdRef: ChangeDetectorRef
+  ) {
+    super(stateService, zone, cdRef);
+    this.name = 'Root';
+    // this.user$
+    // .pipe(tap((user) => console.log(user)))
+    // .subscribe(() => {})
   }
 
   changeData (): void {
-    this.data = 'Parent - ' + this.render;
-    // this.data = 'Parent';
-    // this.stateService.setAsyncPipe('Parent');
+    this.data = this.name;
+    // this.data = `${this.name} - ${this.cd}`;
   }
 
-  clickEmpty (): void {}
-
-  click (): void {
-    this.user.age = this.render;
+  changeObject (): void {
+    this.user.age = this.cd;
     // this.user = { ...this.user };
+    // this.user$.next(this.user);
   }
 
-  input (input: any): void {
-    this.stateService.setAsyncPipe(input.target.value);
+  inputAsyncPipe (event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.stateService.setAsyncPipe(value);
   }
 }

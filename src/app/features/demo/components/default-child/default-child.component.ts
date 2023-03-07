@@ -1,33 +1,31 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
+import { BaseComponent } from 'src/app/class/base.component';
+import { StateService } from '../../services/state.service';
 
 @Component({
   selector: 'app-default-child',
   templateUrl: './default-child.component.html',
   styleUrls: ['./default-child.component.scss']
 })
-export class DefaultChildComponent implements AfterViewInit {
-
-  public render = 0;
-  @Input() child?: string;
-  @Input() data: string = '';
-  @Output() output = new EventEmitter();
-
-  ngAfterViewInit(): void {
-    this.output.emit();
+export class DefaultChildComponent extends BaseComponent {
+  constructor (
+    stateService: StateService,
+    zone: NgZone,
+    cdRef: ChangeDetectorRef
+  ) {
+    super(stateService, zone, cdRef);
+    this.name = 'Default -';
   }
 
-  isRendering (): void {
-    console.log(`Default - ${this.child} is rendering`);
-    this.render++;
+  override request (): void {
+    this.stateService.onRequest()
+      .subscribe((response) => {
+        console.log(response);
+        this.outputEvent.emit();
+      });
   }
 
   changeData (): void {
-    this.data = `Default - ${this.child} - ${this.render}`;
+    this.data = `${this.name} ${this.child} ${this.cd}`;
   }
-
-  mouseEvent (): void {
-    this.output.emit();
-  }
-
-  input (input: any): void {}
 }

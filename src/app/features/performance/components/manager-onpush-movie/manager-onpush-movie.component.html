@@ -1,0 +1,15 @@
+<div>
+  <header>
+    List Movies OnPush
+  </header>
+
+  <div class="actions">
+    <button (click)="clickEmpty()">Click</button>
+    <input type="text" placeholder="Input text" (input)="inputChange($event)">
+  </div>
+
+  <app-list-onpush-performance
+    [movies]="(movies$ | async) || []">
+  </app-list-onpush-performance>
+
+</div>

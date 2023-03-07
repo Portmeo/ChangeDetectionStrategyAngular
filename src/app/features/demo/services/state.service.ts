@@ -30,7 +30,7 @@ export class StateService {
   }
 
   onRequest (): Observable<any> {
-    return this.http.get<any>(environment.urlApi);
+    return this.http.get<any>(environment.urlApi.movie);
   }
 
   blockEvents (baseNumber: number): void {

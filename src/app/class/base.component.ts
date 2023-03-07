@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { StateService } from '../features/demo/service/state.service';
+import { StateService } from '../features/demo/services/state.service';
 
 @Component({
   selector: '',
@@ -73,5 +73,5 @@ export class BaseComponent implements AfterViewInit, OnChanges {
 
   clickEmpty (): void {}
 
-  inputEmpty (_input: any): void { }
+  inputEmpty (_input: Event): void { }
 }

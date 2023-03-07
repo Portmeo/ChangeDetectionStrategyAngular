@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone } from '@angular/core';
 import { BaseComponent } from 'src/app/class/base.component';
-import { StateService } from '../../service/state.service';
+import { StateService } from '../../services/state.service';
 
 @Component({
   selector: 'app-onpush-child',

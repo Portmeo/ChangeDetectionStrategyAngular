@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  urlApi: 'http://localhost:3000/movies'
+  urlApi: {
+    movie: 'http://localhost:3000/movies'
+  }
 };
 
 /*

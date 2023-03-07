@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
 import { BaseComponent } from 'src/app/class/base.component';
 import { User } from './models/user.model';
-import { StateService } from './service/state.service';
+import { StateService } from './services/state.service';
 
 @Component({
   selector: 'app-demo',
@@ -30,8 +30,8 @@ export class DemoComponent extends BaseComponent {
   }
 
   changeData (): void {
-    // this.data = this.name;
-    this.data = `${this.name} - ${this.render}`;
+    this.data = this.name;
+    // this.data = `${this.name} - ${this.render}`;
   }
 
   changeObject (): void {
@@ -40,7 +40,8 @@ export class DemoComponent extends BaseComponent {
     // this.user$.next(this.user);
   }
 
-  inputAsyncPipe (input: any): void {
-    this.stateService.setAsyncPipe(input.target.value);
+  inputAsyncPipe (event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.stateService.setAsyncPipe(value);
   }
 }

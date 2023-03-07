@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class StateService {
-  private stateAsyncPipe: BehaviorSubject<string> = new BehaviorSubject('');
+  private stateAsyncPipe$: BehaviorSubject<string> = new BehaviorSubject('');
   private signals = signal(0);
 
   constructor (
@@ -21,7 +21,7 @@ export class StateService {
   }
 
   getAsyncPipe (): Observable<string> {
-    return this.stateAsyncPipe.asObservable()
+    return this.stateAsyncPipe$.asObservable()
       .pipe(
         filter((value) => value !== ''),
         // tap(console.log)
@@ -29,7 +29,7 @@ export class StateService {
   }
 
   setAsyncPipe (value: string): void {
-    this.stateAsyncPipe.next(value);
+    this.stateAsyncPipe$.next(value);
   }
 
   onPromise (): Promise<any>  {

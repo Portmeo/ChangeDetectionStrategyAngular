@@ -31,7 +31,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
   }
 
   changeDetection (name: string): void {
-    console.log(`${name} is change detection`);
+    console.log(`${name} change detection`);
     this.cd += 1;
   }
 
@@ -72,7 +72,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
   }
 
   clickEmpty (): void {
-    // this.stateService.setSignals();
+    this.stateService.setSignals();
   }
 
   inputEmpty (_input: Event): void { }

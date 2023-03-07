@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { timer } from 'rxjs';
+import { BehaviorSubject, filter, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -13,11 +12,15 @@ export class StateService {
   ) {}
 
   getAsyncPipe (): Observable<string> {
-    return this.stateAsyncPipe.asObservable();
+    return this.stateAsyncPipe.asObservable()
+      .pipe(
+        filter((value) => value !== ''),
+        // tap(console.log)
+      );
   }
 
-  setAsyncPipe (asyncPipe: string): void {
-    this.stateAsyncPipe.next(asyncPipe);
+  setAsyncPipe (value: string): void {
+    this.stateAsyncPipe.next(value);
   }
 
   onPromise (): Promise<any>  {
@@ -27,7 +30,7 @@ export class StateService {
   }
 
   onRequest (): Observable<any> {
-    return this.http.get<any>(environment.urlApi)
+    return this.http.get<any>(environment.urlApi);
   }
 
   blockEvents (baseNumber: number): void {

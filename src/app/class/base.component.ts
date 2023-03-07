@@ -27,7 +27,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    console.log(`AFTER_VIEW_INIT -- ${this.name} ${this.child} ${this.data}`);
+    // console.log(`AFTER_VIEW_INIT -- ${this.name} ${this.child} ${this.data}`);
   }
 
   isRendering (name: string): void {

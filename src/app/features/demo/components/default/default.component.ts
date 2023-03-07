@@ -22,6 +22,6 @@ export class DefaultComponent extends BaseComponent  {
   }
 
   changeData (): void {
-    this.data = `${this.name} ${this.render}`;
+    this.data = `${this.name} ${this.cd}`;
   }
 }

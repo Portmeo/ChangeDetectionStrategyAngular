@@ -7,7 +7,7 @@ import { StateService } from '../features/demo/services/state.service';
 })
 export class BaseComponent implements AfterViewInit, OnChanges {
   name = '';
-  render = 0;
+  cd = 0;
   output = 0;
   timer = 0;
   interval?: any;
@@ -30,19 +30,19 @@ export class BaseComponent implements AfterViewInit, OnChanges {
     // console.log(`AFTER_VIEW_INIT -- ${this.name} ${this.child} ${this.data}`);
   }
 
-  isRendering (name: string): void {
-    console.log(`${name} is rendering`);
-    this.render++;
+  changeDetection (name: string): void {
+    console.log(`${name} is change detection`);
+    this.cd += 1;
   }
 
   setOutput (): void {
-    this.output++;
+    this.output += 1;
   }
 
   initTimer (): void {
     if (!this.interval) {
       this.interval = setInterval(() => {
-        this.timer++;
+        this.timer += 1;
         // this.cdRef.detectChanges();
         // this.cdRef.markForCheck();
       }, 1000);
@@ -50,7 +50,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
     // this.zone.runOutsideAngular(() => {
     //   if (!this.interval) {
     //     this.interval = setInterval(() => {
-    //       this.timer++;
+    //       this.timer += 1;
     //       this.timer % 5 == 0 && this.cdRef.detectChanges();
     //     }, 1000);
     //   }
@@ -71,7 +71,7 @@ export class BaseComponent implements AfterViewInit, OnChanges {
       .subscribe(console.log);
   }
 
-  clickEmpty (): void {}
+  clickEmpty (): void { }
 
   inputEmpty (_input: Event): void { }
 }

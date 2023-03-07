@@ -31,11 +31,11 @@ export class DemoComponent extends BaseComponent {
 
   changeData (): void {
     this.data = this.name;
-    // this.data = `${this.name} - ${this.render}`;
+    // this.data = `${this.name} - ${this.cd}`;
   }
 
   changeObject (): void {
-    this.user.age = this.render;
+    this.user.age = this.cd;
     // this.user = { ...this.user };
     // this.user$.next(this.user);
   }

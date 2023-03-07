@@ -28,7 +28,7 @@ export class OnpushChildComponent extends BaseComponent  {
   }
 
   changeData(): void {
-    this.data = `${this.name} ${this.child} ${this.render}`;
+    this.data = `${this.name} ${this.child} ${this.cd}`;
   }
 
 }

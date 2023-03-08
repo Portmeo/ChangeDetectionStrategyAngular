@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class StateService {
-  private stateAsyncPipe$: BehaviorSubject<string> = new BehaviorSubject('');
+  private stateAsyncPipe$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private signals = signal<number>(0);
 
   constructor (
